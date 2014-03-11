@@ -21,6 +21,17 @@
 	background: #0c92d7;
 }
 
+#head a {
+	font-size: 14px;
+	color: #fff;
+}
+
+#head li.active a,#head li.open > a  {
+	background: #0c81d7;
+}
+#head li.open .dropdown-menu a {
+	color: #333;
+}
 #content {
 	margin-top: 20px;
 }
@@ -33,6 +44,39 @@ th, td {
 
 <body>
 	<div class="navbar navbar-default navbar-fixed-top" id="head">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Beauty Salon</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="#">首页</a></li>
+					<li class="active"><a href="#">会员管理</a></li>
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员[Venz] <b class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">账号设置</a></li>
+							<li><a href="#">系统设置</a></li>
+							<li><a href="#">日志查看</a></li>
+							<li class="divider"></li>
+							<li><a href="#">退出系统</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
 	</div>
 	<div class="container" id="content">
 		<form class="page-header form-inline" role="form">
