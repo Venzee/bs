@@ -1,4 +1,4 @@
-package net.dlhz.core.util;
+package net.venz.core.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -1,9 +1,9 @@
-package net.dlhz.core.base.listener;
+package net.venz.core.base.listener;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import net.dlhz.core.util.SessionUtil;
+import net.venz.core.util.SessionUtil;
 
 
 public class SessionListener implements HttpSessionListener {

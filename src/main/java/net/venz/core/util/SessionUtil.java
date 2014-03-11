@@ -1,9 +1,9 @@
-package net.dlhz.core.util;
+package net.venz.core.util;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.dlhz.core.base.entity.SessionUser;
+import net.venz.core.base.entity.SessionUser;
 
 import org.apache.log4j.Logger;
 

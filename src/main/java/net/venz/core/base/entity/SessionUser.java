@@ -1,4 +1,4 @@
-package net.dlhz.core.base.entity;
+package net.venz.core.base.entity;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package net.dlhz.core.base.dao;
+package net.venz.core.base.dao;
 
 import java.io.Closeable;
 import java.sql.Connection;
@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,8 +19,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import net.dlhz.core.base.entity.Page;
-import net.dlhz.core.util.DataUtil;
+import net.venz.core.base.entity.Page;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
