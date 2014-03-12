@@ -9,12 +9,18 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<!-- <context:annotation-config /> -->
-	<context:component-scan base-package="net.dlhz" />
+	<context:component-scan base-package="net.venz" />
 
 	<!-- <mvc:resources location="/style/" mapping="/style/*" /> <mvc:resources 
 		location="/script/" mapping="/script/*" /> -->
 
-	<!-- Freemarker的视图配置 -->
+	<!-- 视图解释类 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" /><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	</bean> 
+	
+	<!-- Freemarker的视图配置
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="cache" value="true" />
@@ -39,7 +45,7 @@
 				<prop key="template_exception_handler">ignore</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
 
 	<!-- Druid 数据连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"

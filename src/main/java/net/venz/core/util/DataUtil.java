@@ -3,6 +3,7 @@ package net.venz.core.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -33,25 +34,25 @@ public class DataUtil {
 	 * @return
 	 */
 	public static String getCurrHour() {
-		return formatDate("HH");
+		return formatDate(null, "HH");
 	}
 
 	/**
-	 * 获取当前日期(yyyy-mm-dd)
+	 * 获取当前日期(yyyy-MM-dd)
 	 * 
 	 * @return
 	 */
 	public static String getCurrDateStr() {
-		return formatDate("yyyy-mm-dd");
+		return formatDate(null, "yyyy-MM-dd");
 	}
 
 	/**
-	 * 获取当前时间(yyyy-mm-dd HH:ss:mm)
+	 * 获取当前时间(yyyy-MM-dd HH:mm:ss)
 	 * 
 	 * @return
 	 */
 	public static String getCurrDateTimeStr() {
-		return formatDate("yyyy-mm-dd HH:mm:ss");
+		return formatDate(null, "yyyy-MM-dd HH:mm:ss");
 	}
 
 	/**
@@ -77,6 +78,39 @@ public class DataUtil {
 		return false;
 	}
 
+	/**
+	 * 判断字符串是否为日期
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static boolean isDateStr(String str) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			format.parse(str);
+		} catch (ParseException e) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 字符串日期型转换格式
+	 * 
+	 * @param str
+	 * @param pattern
+	 * @return
+	 */
+	public static String parseDateStr(String str, String pattern) {
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		try {
+			str = formatDate(format.parse(str), pattern);
+		} catch (ParseException e) {
+			LOG.error("转换日期时发生异常", e);
+		}
+		return str;
+	}
+	
 	/**
 	 * 中文字符串转拼音码
 	 * 
@@ -271,6 +305,9 @@ public class DataUtil {
 					}
 				}
 			}
+			if(isDateStr(value.toString())){
+				value = parseDateStr(value.toString(), "yyyy-MM-dd HH:mm:ss");
+			}
 			Method method = null;
 			try {
 				method = obj.getClass().getMethod("set" + attr, type);
@@ -309,8 +346,11 @@ public class DataUtil {
 		return false;
 	}
 
-	private static String formatDate(String pattern) {
+	private static String formatDate(Date date, String pattern) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+		if(date == null){
+			date = new Date();
+		}
 		return dateFormat.format(new Date());
 	}
 

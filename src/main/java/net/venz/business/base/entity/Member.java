@@ -21,7 +21,7 @@ public class Member implements Serializable {
 	private String joinDate; // 注册时间
 	private double point; // 积分
 	private double sumConsumePoint; // 已消费积分
-	private int counsumeTimes; // 消费次数
+	private int consumeTimes; // 消费次数
 	private double sumConsumeFee; // 总消费金额
 	private double sumDebtFee; // 总欠款
 	private int introMemberId; // 介绍会员ID
@@ -109,12 +109,12 @@ public class Member implements Serializable {
 		this.sumConsumePoint = sumConsumePoint;
 	}
 
-	public int getCounsumeTimes() {
-		return counsumeTimes;
+	public int getConsumeTimes() {
+		return consumeTimes;
 	}
 
-	public void setCounsumeTimes(int counsumeTimes) {
-		this.counsumeTimes = counsumeTimes;
+	public void setConsumeTimes(int consumeTimes) {
+		this.consumeTimes = consumeTimes;
 	}
 
 	public double getSumConsumeFee() {

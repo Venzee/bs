@@ -308,12 +308,12 @@ public class BaseDao extends JdbcDaoSupport {
 	private void makeConditionSql(LinkedHashMap<String, Object> condition, StringBuffer sqlBuffer, String sql, List<Object> params) {
 		if(condition.size() > 0){
 			if(sql.indexOf("where") == -1){
-				sqlBuffer.append(" where 1=1");
+				sqlBuffer.append(" where 1 = 1");
 			}
 			Iterator<String> keys = condition.keySet().iterator();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
-				sqlBuffer.append(" and ").append(key).append("=?");
+				sqlBuffer.append(" and ").append(key).append(" = ?");
 			}
 			params.addAll(condition.values());
 		}

@@ -15,9 +15,8 @@ public class MemberCard implements Serializable {
 	private int memberId; // 所属会员ID
 	private String cardNo; // 卡号
 	private int cardTypeId; // 卡类型ID
-	private int attachFlag; // 附属卡标示
 	private double cardFee; // 卡余额
-	private double sumCardFee; // 卡总额
+	private double sumCardFee; // 卡储值总额
 	private double presentFee; // 赠送余额
 	private double sumPresentFee; // 赠送总额
 	private double treatFee; // 疗程余额
@@ -59,14 +58,6 @@ public class MemberCard implements Serializable {
 
 	public void setCardTypeId(int cardTypeId) {
 		this.cardTypeId = cardTypeId;
-	}
-
-	public int getAttachFlag() {
-		return attachFlag;
-	}
-
-	public void setAttachFlag(int attachFlag) {
-		this.attachFlag = attachFlag;
 	}
 
 	public double getCardFee() {
