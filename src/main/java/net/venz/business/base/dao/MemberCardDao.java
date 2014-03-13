@@ -21,7 +21,7 @@ public class MemberCardDao extends BaseDao {
 	}
 	
 	public List<Map<String, Object>> getMemberCardList(Object memberId) {
-		String sql = "select * from base_member_card where memberid = ?";
+		String sql = "select id,cardno,cardtypeid,consumediscount,goodsdiscount,cardfee,presentfee,treatfee,treatpresentfee from base_member_card where memberid = ?";
 		List<Map<String, Object>> dataList = null;
 		try {
 			dataList = this.executeQueryMultiple(sql, Arrays.asList(memberId));

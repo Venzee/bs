@@ -21,10 +21,13 @@ public class MemberCard implements Serializable {
 	private double sumPresentFee; // 赠送总额
 	private double treatFee; // 疗程余额
 	private double treatPresentFee; // 疗程赠送余额
-	private double discount; // 折扣
+	private double consumeDiscount; // 消费折扣
+	private double goodsDiscount; // 卖品折扣
 	private int shopId; // 所属商家ID
 	private String openDate; // 开卡日期
 	private int openEmployeeId; // 开卡员工ID
+	private int smsFlag; // 是否发送短信
+	private int smsCostFlag; // 是否扣除短信费用
 	private String expireDate; // 失效日期
 	private String revokeTime; // 删除时间
 
@@ -108,12 +111,20 @@ public class MemberCard implements Serializable {
 		this.treatPresentFee = treatPresentFee;
 	}
 
-	public double getDiscount() {
-		return discount;
+	public double getConsumeDiscount() {
+		return consumeDiscount;
 	}
 
-	public void setDiscount(double discount) {
-		this.discount = discount;
+	public void setConsumeDiscount(double consumeDiscount) {
+		this.consumeDiscount = consumeDiscount;
+	}
+
+	public double getGoodsDiscount() {
+		return goodsDiscount;
+	}
+
+	public void setGoodsDiscount(double goodsDiscount) {
+		this.goodsDiscount = goodsDiscount;
 	}
 
 	public int getShopId() {
@@ -138,6 +149,22 @@ public class MemberCard implements Serializable {
 
 	public void setOpenEmployeeId(int openEmployeeId) {
 		this.openEmployeeId = openEmployeeId;
+	}
+
+	public int getSmsFlag() {
+		return smsFlag;
+	}
+
+	public void setSmsFlag(int smsFlag) {
+		this.smsFlag = smsFlag;
+	}
+
+	public int getSmsCostFlag() {
+		return smsCostFlag;
+	}
+
+	public void setSmsCostFlag(int smsCostFlag) {
+		this.smsCostFlag = smsCostFlag;
 	}
 
 	public String getExpireDate() {

@@ -8,46 +8,61 @@ public class Page implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3041436827544897993L;
-	private int currPage = 1;// 当前页码,默认1
-	private int totalPage = 1;// 总页数
+	private int pn = 1;// 当前页码,默认1
+	private int pc = 1;// 总页数
 	private int count = 0;// 总记录数
-	private int pageRecord = 10;// 每页记录数
-	private int startRecord = 1;// 开始记录数
+	private int pr = 15;// 每页记录数
+	private int sr = 1;// 开始记录数
 
 	/**
 	 * 初使化
 	 * 
-	 * @param count 总记录数
-	 * @param rpp 每页记录数
+	 * @param count
+	 *            总记录数
+	 * @param rpp
+	 *            每页记录数
 	 */
 	public void init(int count) {
 		setCount(count);// 总记录数
-		if (getPageRecord() < 10 || getPageRecord() > 100) {
-			setPageRecord(pageRecord);// 每页记录数
+		if (getPr() < 15 || getPr() > 100) {
+			setPr(pr);// 每页记录数
 		}
-		setStartRecord((currPage - 1) * this.pageRecord);// 查询开始记录数
-		if(count % this.pageRecord == 0){
-			setTotalPage(count / this.pageRecord);// 总页数
-		}else{
-			setTotalPage(count / this.pageRecord + 1);// 总页数
+		setSr((pn - 1) * this.pr);// 查询开始记录数
+		if (count % this.pr == 0) {
+			setPc(count / this.pr);// 总页数
+		} else {
+			setPc(count / this.pr + 1);// 总页数
 		}
-		
+
 	}
 
-	public int getCurrPage() {
-		return currPage;
+	/**
+	 * 构建分页
+	 * 
+	 * @param page
+	 * @param count
+	 */
+	public static void buildPage(Page page, int count) {
+		if (page == null) {
+			page = new Page();
+		}
+		page.init(count);
 	}
 
-	public void setCurrPage(int currPage) {
-		this.currPage = currPage;
+	public int getPn() {
+		return pn;
 	}
 
-	public int getTotalPage() {
-		return totalPage;
+	public void setPn(int pn) {
+		this.pn = pn;
 	}
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
+	public int getPc() {
+		return pc;
+	}
+
+	public void setPc(int pc) {
+		this.pc = pc;
 	}
 
 	public int getCount() {
@@ -58,20 +73,20 @@ public class Page implements Serializable {
 		this.count = count;
 	}
 
-	public int getPageRecord() {
-		return pageRecord;
+	public int getPr() {
+		return pr;
 	}
 
-	public void setPageRecord(int pageRecord) {
-		this.pageRecord = pageRecord;
+	public void setPr(int pr) {
+		this.pr = pr;
 	}
 
-	public int getStartRecord() {
-		return startRecord;
+	public int getSr() {
+		return sr;
 	}
 
-	public void setStartRecord(int startRecord) {
-		this.startRecord = startRecord;
+	public void setSr(int sr) {
+		this.sr = sr;
 	}
 
 }

@@ -299,8 +299,8 @@ public class BaseDao extends JdbcDaoSupport {
 		this.makeConditionSql(condition, sqlBuffer, sql, params);
 		if(null != page){
 			sqlBuffer.append(" limit ?,?");
-			params.add(page.getStartRecord());
-			params.add(page.getPageRecord());
+			params.add(page.getSr());
+			params.add(page.getPr());
 		}
 		return this.executeQueryMultiple(sqlBuffer.toString(), params);
 	}

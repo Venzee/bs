@@ -79,6 +79,19 @@ public class DataUtil {
 	}
 
 	/**
+	 * 判断对象是否为NULL
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public static boolean isNull(Object obj) {
+		if (null == obj) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * 判断字符串是否为日期
 	 * 
 	 * @param str

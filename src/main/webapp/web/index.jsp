@@ -41,6 +41,9 @@ th, td {
 	text-align: center;
 	vertical-align: middle;
 }
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
 </style>
 </head>
 
@@ -61,7 +64,8 @@ th, td {
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="#">首页</a></li>
-					<li class="active"><a href="#">会员管理</a></li>
+					<li class="active"><a href="m/list">会员管理</a></li>
+					<li><a href="card/list">卡类型设置</a></li>
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
@@ -81,12 +85,12 @@ th, td {
 		</div>
 	</div>
 	<div class="container" id="content">
-		<form class="page-header form-inline" role="form">
+		<form action="m/list" method="get" class="page-header form-inline" role="form">
 			<div class="row">
 				<div class="col-xs-2">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon">门店</span>
-						<select class="form-control">
+						<select class="form-control" name="">
 							<option>请选择</option>
 							<option>布吉店</option>
 							<option>坂田店</option>
@@ -98,7 +102,7 @@ th, td {
 				<div class="col-xs-3">
 					<div class="input-group input-group-sm">
 						<span class="input-group-addon">关键字</span>
-						<input type="search" class="form-control" id="keyword" placeholder="姓名/卡号/手机号">
+						<input type="search" class="form-control" name="keyword" id="keyword" value="${form.keyword }" placeholder="姓名/卡号/手机号">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>
@@ -109,10 +113,10 @@ th, td {
 		</form>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				本次查询结果：共${fn:length(mList) }个会员。
+				本次查询结果：共${page.count }个会员。
 			</div>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table class="table table-condensed">
 					<thead>
 						<tr class="info">
 							<th>#</th>
@@ -129,53 +133,101 @@ th, td {
 					</thead>
 					<tbody>
 						<c:forEach items="${mList }" var="m" varStatus="i">
-							<tr>
-								<td>${i.count }</td>
-								<td><a href="#">${m.member.name }</a></td>
-								<td>
-									<c:choose>
-										<c:when test="${m.member.sex == 1 }">男</c:when>
-										<c:otherwise>女</c:otherwise>
-									</c:choose>
-								</td>
-								<td>${m.member.mobile }</td>
-								<td>${m.memberCards[0].cardNo }</td>
-								<td>${m.memberCards[0].cardTypeId }</td>
-								<td>${m.memberCards[0].discount }</td>
-								<td class="warning">
-									<c:choose>
-										<c:when test="${fn:length(m.memberCards) > 0 }">
+							<c:choose>
+								<c:when test="${i.count % 2 != 1 }">
+									<tr class="active">
+								</c:when>
+								<c:otherwise>
+									<tr>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${fn:length(m.memberCards) > 1 }">
+										<td rowspan="${fn:length(m.memberCards) }"><input type="checkbox" /></td>
+										<td rowspan="${fn:length(m.memberCards) }"><a href="#">${m.member.name }</a></td>
+										<td rowspan="${fn:length(m.memberCards) }">
+											<c:choose>
+												<c:when test="${m.member.sex == 1 }">男</c:when>
+												<c:otherwise>女</c:otherwise>
+											</c:choose>
+										</td>
+										<td rowspan="${fn:length(m.memberCards) }">${m.member.mobile }</td>
+										<td class="warning">${m.memberCards[0].cardNo }</td>
+										<td class="warning">${m.memberCards[0].cardTypeId }</td>
+										<td class="warning">
+											[消费:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
+											[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
+										</td>
+										<td class="warning">
 											[储值余额:<span class="text-danger">${m.memberCards[0].cardFee }</span>元];
 											[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元];
 											[疗程余额:<span class="text-danger">${m.memberCards[0].treatFee }</span>元];
 											[疗程赠送:<span class="text-danger">${m.memberCards[0].treatPresentFee }</span>元]
-										</c:when>
-										<c:otherwise>
-											<span class="text-danger">无会员卡 <a href="#">[开卡]</a></span>
-										</c:otherwise>
-									</c:choose>
-								</td>
-								<td>${fn:substring(m.member.joinDate,0,10) }</td>
-								<td>${fn:substring(m.member.lastConsumeDate,0,10) }</td>
-							</tr>
+										</td>
+										<td rowspan="${fn:length(m.memberCards) }">${fn:substring(m.member.joinDate,0,10) }</td>
+										<td rowspan="${fn:length(m.memberCards) }">${fn:substring(m.member.lastConsumeDate,0,10) }</td>
+									</tr>
+									<c:forEach items="${m.memberCards }" var="c" begin="1">
+										<tr class="warning">
+											<td>${c.cardNo }</td>
+											<td>${c.cardTypeId }</td>
+											<td class="warning">
+												[消费:<c:if test="${c.consumeDiscount == 0 }">无折扣</c:if><c:if test="${c.consumeDiscount != 0 }"><span class="text-danger">${c.consumeDiscount }</span>折</c:if>]<br/>
+												[卖品:<c:if test="${c.goodsDiscount == 0 }">无折扣</c:if><c:if test="${c.goodsDiscount != 0 }"><span class="text-danger">${c.goodsDiscount }</span>折</c:if>]
+											</td>
+											<td>
+												[储值余额:<span class="text-danger">${c.cardFee }</span>元];
+												[赠送余额:<span class="text-danger">${c.presentFee }</span>元];
+												[疗程余额:<span class="text-danger">${c.treatFee }</span>元];
+												[疗程赠送:<span class="text-danger">${c.treatPresentFee }</span>元]
+											</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+										<td><input type="checkbox" /></td>
+										<td><a href="#">${m.member.name }</a></td>
+										<td>
+											<c:choose>
+												<c:when test="${m.member.sex == 1 }">男</c:when>
+												<c:otherwise>女</c:otherwise>
+											</c:choose>
+										</td>
+										<td>${m.member.mobile }</td>
+										<c:choose>
+											<c:when test="${fn:length(m.memberCards) > 0 }">
+												<td class="warning">${m.memberCards[0].cardNo }</td>
+												<td class="warning">${m.memberCards[0].cardTypeId }</td>
+												<td class="warning">
+													[消费:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
+													[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
+												</td>
+												<td class="warning">
+													[储值余额:<span class="text-danger">${m.memberCards[0].cardFee }</span>元];
+													[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元]<br/>
+													[疗程余额:<span class="text-danger">${m.memberCards[0].treatFee }</span>元];
+													[疗程赠送:<span class="text-danger">${m.memberCards[0].treatPresentFee }</span>元]
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td colspan="4" class="warning">
+													<span class="text-danger">无会员卡 <a href="#">[开卡]</a></span>
+												</td>
+											</c:otherwise>
+										</c:choose>
+										<td>${fn:substring(m.member.joinDate,0,10) }</td>
+										<td>${fn:substring(m.member.lastConsumeDate,0,10) }</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</tbody>
 				</table>
 				
 				<!-- <div class="panel-footer"></div> -->
 			</div>
-			
-			<ul class="pagination pull-right">
-				<li><a href="#">&laquo;</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">&raquo;</a></li>
-			</ul>
 		</div>
-		
+		<jsp:include page="comm/page.jsp"></jsp:include>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">

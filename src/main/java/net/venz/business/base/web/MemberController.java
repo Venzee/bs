@@ -6,6 +6,7 @@ import net.venz.business.base.MemberForm;
 import net.venz.business.base.entity.Member;
 import net.venz.business.base.entity.MemberCard;
 import net.venz.business.base.service.MemberService;
+import net.venz.core.base.entity.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/list")
-	public String listPage(MemberForm form, ModelMap map) {
-		List<MemberForm> memberList = memberService.getMemberListPage(form);
+	public String listPage(MemberForm form, Page page, ModelMap map) {
+		int count = memberService.countMemberList(form);
+		Page.buildPage(page, count);
+		List<MemberForm> memberList = memberService.getMemberListPage(form, page);
+		map.put("form", form);
+		map.put("page", page);
 		map.put("mList", memberList);
 		return "../web/index";
 	}

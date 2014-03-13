@@ -1,6 +1,7 @@
 package net.venz.business.base.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import net.venz.business.base.dao.MemberCardDao;
 import net.venz.business.base.dao.MemberDao;
 import net.venz.business.base.entity.Member;
 import net.venz.business.base.entity.MemberCard;
+import net.venz.core.base.entity.Page;
 import net.venz.core.util.DataUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,19 +37,32 @@ public class MemberService {
 		}
 	}
 
-	public List<MemberForm> getMemberListPage(MemberForm form) {
+	public int countMemberList(MemberForm form) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		if(!DataUtil.isEmptyStr(form.getKeyword())){
+			data.put("keyword", form.getKeyword());
+		}
+		int count = memberDao.countMemberList(data);
+		return count;
+	}
+	
+	public List<MemberForm> getMemberListPage(MemberForm form, Page page) {
+		Map<String, Object> data = new HashMap<String, Object>();
 		List<MemberForm> memberList = new ArrayList<MemberForm>();
-		List<Map<String, Object>> adataList = memberDao.getMemberListPage();
-		for (Map<String, Object> amap : adataList) {
+		
+		if(!DataUtil.isEmptyStr(form.getKeyword())){
+			data.put("keyword", form.getKeyword());
+		}
+		List<Map<String, Object>> dataList = memberDao.getMemberListPage(data, page);
+		
+		for (Map<String, Object> map : dataList) {
 			MemberForm memberForm = new MemberForm();
 			List<MemberCard> memberCards = new ArrayList<MemberCard>();
+			Member member = (Member) DataUtil.parseMapToObject(map, Member.class);
 			
-			Member member = (Member) DataUtil.parseMapToObject(amap, Member.class);
-			
-			// 查询会员所持有的会员卡
-			List<Map<String, Object>> bdataList = memberCardDao.getMemberCardList(member.getId());
-			for (Map<String, Object> bmap : bdataList) {
-				MemberCard memberCard = (MemberCard) DataUtil.parseMapToObject(bmap, MemberCard.class);
+			List<Map<String, Object>> cList = memberCardDao.getMemberCardList(member.getId());
+			for (Map<String, Object> cmap : cList) {
+				MemberCard memberCard = (MemberCard) DataUtil.parseMapToObject(cmap, MemberCard.class);
 				memberCards.add(memberCard);
 			}
 			
