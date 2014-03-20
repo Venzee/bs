@@ -14,7 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>首页</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap_.css">
+<link rel="stylesheet" type="text/css" href="css/one-debug.css">
 <style type="text/css">
 * {
 	font: 12px/1 Tahoma, Helvetica, Arial, Microsoft Yahei, "\5b8b\4f53", sans-serif;
@@ -155,12 +156,12 @@ th, td {
 										<td class="warning">${m.memberCards[0].cardNo }</td>
 										<td class="warning">${m.memberCards[0].cardTypeId }</td>
 										<td class="warning">
-											[消费:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
+											[项目:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
 											[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
 										</td>
 										<td class="warning">
 											[储值余额:<span class="text-danger">${m.memberCards[0].cardFee }</span>元];
-											[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元];
+											[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元]<br/>
 											[疗程余额:<span class="text-danger">${m.memberCards[0].treatFee }</span>元];
 											[疗程赠送:<span class="text-danger">${m.memberCards[0].treatPresentFee }</span>元]
 										</td>
@@ -172,12 +173,12 @@ th, td {
 											<td>${c.cardNo }</td>
 											<td>${c.cardTypeId }</td>
 											<td class="warning">
-												[消费:<c:if test="${c.consumeDiscount == 0 }">无折扣</c:if><c:if test="${c.consumeDiscount != 0 }"><span class="text-danger">${c.consumeDiscount }</span>折</c:if>]<br/>
+												[项目:<c:if test="${c.consumeDiscount == 0 }">无折扣</c:if><c:if test="${c.consumeDiscount != 0 }"><span class="text-danger">${c.consumeDiscount }</span>折</c:if>]<br/>
 												[卖品:<c:if test="${c.goodsDiscount == 0 }">无折扣</c:if><c:if test="${c.goodsDiscount != 0 }"><span class="text-danger">${c.goodsDiscount }</span>折</c:if>]
 											</td>
 											<td>
 												[储值余额:<span class="text-danger">${c.cardFee }</span>元];
-												[赠送余额:<span class="text-danger">${c.presentFee }</span>元];
+												[赠送余额:<span class="text-danger">${c.presentFee }</span>元]<br/>
 												[疗程余额:<span class="text-danger">${c.treatFee }</span>元];
 												[疗程赠送:<span class="text-danger">${c.treatPresentFee }</span>元]
 											</td>
@@ -199,7 +200,7 @@ th, td {
 												<td class="warning">${m.memberCards[0].cardNo }</td>
 												<td class="warning">${m.memberCards[0].cardTypeId }</td>
 												<td class="warning">
-													[消费:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
+													[项目:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
 													[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
 												</td>
 												<td class="warning">
@@ -255,43 +256,111 @@ th, td {
 				<form action="m/add" method="post" role="form">
 					<input type="hidden" name="id" value="0">
 					<div class="modal-body">
-						<div class="form-group">
-							<label for="name" class="control-label">姓名</label>
-							<input type="text" class="form-control input-sm" name="name" id="name" placeholder="姓名">
+						<div class="row">
+	  						<div class="col-xs-3">
+								<div class="form-group">
+									<label for="name" class="control-label">姓名</label>
+									<input type="text" class="form-control input-sm" name="name" id="name" placeholder="姓名">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="sex" class="control-label">性别</label>
+									<select class="form-control input-sm" name="sex" id="sex">
+										<option value="0">女</option>
+										<option value="1">男</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="form-group">
+									<label for="mobile" class="control-label">手机</label>
+									<input type="tel" class="form-control input-sm" name="mobile" id="mobile" placeholder="手机">
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="sex" class="control-label">性别</label>
-							<select class="form-control input-sm" name="sex" id="sex">
-								<option value="0">女</option>
-								<option value="1">男</option>
-							</select>
+						
+						<div class="row">
+	  						<div class="col-xs-3">
+								<div class="form-group">
+									<label for="password" class="control-label">密码</label>
+									<input type="password" class="form-control input-sm" name="password" id="password" placeholder="输入密码">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="re-password" class="control-label">确认密码</label>
+									<input type="password" class="form-control input-sm" name="password" id="re-password" placeholder="再次输入密码">
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="mobile" class="control-label">手机</label>
-							<input type="tel" class="form-control input-sm" name="mobile" id="mobile" placeholder="手机">
+						
+						<h5>卡账户</h5>
+						<div class="row">
+	  						<div class="col-xs-3">
+								<div class="form-group">
+									<label for="cardNo" class="control-label">卡号</label>
+									<input type="text" class="form-control input-sm" name="cardNo" id="cardNo" placeholder="卡号">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="cardType" class="control-label">卡类型</label>
+									<select class="form-control input-sm" name="cardTypeId" id="cardType">
+										<option value="0">请选择</option>
+										<option value="1">钻石卡</option>
+										<option value="2">铂金卡</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="form-group">
+									<label for="expireDate" class="control-label">失效日期</label>
+									<input type="date" class="form-control input-sm" name="expireDate" id="expireDate" placeholder="失效日期">
+								</div>
+							</div>
 						</div>
-					</div>
-					
-					<div class="modal-body">
-						<div class="form-group">
-							<label for="cardNo" class="control-label">卡号</label>
-							<input type="text" class="form-control input-sm" name="cardNo" id="cardNo" placeholder="卡号">
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="discount" class="control-label">折扣</label>
+									<input type="number" class="form-control input-sm" max="10" name="discount" id="discount" placeholder="折扣">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="costFee" class="control-label">工本费现金</label>
+									<input type="number" class="form-control input-sm" max="10" name="costFee" id="costFee" placeholder="工本费现金">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="costFee" class="control-label">工本费银联</label>
+									<input type="number" class="form-control input-sm" max="10" name="costFee" id="costFee" placeholder="工本费银联">
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="cardType" class="control-label">卡类型</label>
-							<select class="form-control input-sm" name="cardTypeId" id="cardType">
-								<option value="0">请选择</option>
-								<option value="1">钻石卡</option>
-								<option value="2">铂金卡</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="discount" class="control-label">折扣</label>
-							<input type="number" class="form-control input-sm" max="10" name="discount" id="discount" placeholder="折扣">
-						</div>
-						<div class="form-group">
-							<label for="expireDate" class="control-label">失效日期</label>
-							<input type="date" class="form-control input-sm" name="expireDate" id="expireDate" placeholder="失效日期">
+						
+						<h5>充值明细</h5>
+						<div class="row">
+	  						<div class="col-xs-3">
+								<div class="input-group input-group-sm">
+									<span class="input-group-addon">现金</span>
+									<input type="number" class="form-control" name="cashPay" id="cashPay" placeholder="现金付">
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="input-group input-group-sm">
+									<span class="input-group-addon">银联</span>
+									<input type="number" class="form-control" name="unionPay" id="unionPay" placeholder="银联付">
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="input-group input-group-sm">
+									<span class="input-group-addon">赠送</span>
+									<input type="number" class="form-control" name="presentFee" id="presentFee" placeholder="赠送金额">
+								</div>
+							</div>
 						</div>
 					</div>
 					

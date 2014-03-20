@@ -2,9 +2,9 @@ package net.venz.business.base.web;
 
 import java.util.List;
 
-import net.venz.business.base.MemberForm;
 import net.venz.business.base.entity.Member;
 import net.venz.business.base.entity.MemberCard;
+import net.venz.business.base.entity.MemberForm;
 import net.venz.business.base.service.MemberService;
 import net.venz.core.base.entity.Page;
 
@@ -34,6 +34,6 @@ public class MemberController {
 		map.put("form", form);
 		map.put("page", page);
 		map.put("mList", memberList);
-		return "../web/index";
+		return "../web/list";
 	}
 }

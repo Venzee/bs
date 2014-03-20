@@ -1,10 +1,7 @@
-package net.venz.business.base;
+package net.venz.business.base.entity;
 
 import java.io.Serializable;
 import java.util.List;
-
-import net.venz.business.base.entity.Member;
-import net.venz.business.base.entity.MemberCard;
 
 public class MemberForm implements Serializable {
 
