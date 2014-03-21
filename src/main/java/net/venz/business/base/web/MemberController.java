@@ -34,6 +34,6 @@ public class MemberController {
 		map.put("form", form);
 		map.put("page", page);
 		map.put("mList", memberList);
-		return "../web/list";
+		return "../web/base/mlist";
 	}
 }

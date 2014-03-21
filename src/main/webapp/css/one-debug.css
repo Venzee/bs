@@ -9225,13 +9225,26 @@ a.ui-button-sgreen {
 	padding-top: 12px;
 }
 
+.ui-form-inline {
+	display: inline-block;
+	*display: inline;
+	color: #595959;
+}
+
+.ui-form-inline * {
+	vertical-align: middle;
+}
+
 /*! block alice/form/1.0.2/input-debug.css */
 .ui-input {
-	padding: 3px 9px;
+	padding: 5px 9px;
+	height: 18px;
 	line-height: 18px;
 	border: 1px solid #c1c1c1;
 	color: #595959;
 	font-size: 12px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .ui-input:hover,.ui-textarea:hover,.ui-input-hover {
@@ -9626,7 +9639,7 @@ input.ui-checkbox {
 
 .ui-paging a.ui-paging-current,.ui-paging a.ui-paging-item:hover {
 	color: #fff;
-	background: #ff9c00;
+	background: #22a9e5;
 }
 
 a.ui-paging-prev:hover,a.ui-paging-next:hover {

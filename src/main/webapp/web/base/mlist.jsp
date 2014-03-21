@@ -51,10 +51,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<div class="ui-box">
 		    <div class="ui-box-content">
-				<form action="" class="ui-form">
-					<label>关键字</label>
-					<input class="ui-input" type="text"/>
-					<a style="padding: 4px 8px; border: 1px solid #ddd;"><span class="glyphicon glyphicon-search"></span> 查询</a>			
+				<form action="m/list" method="get" class="ui-form">
+					<div class="ui-form-inline">
+						<label for="keyword">关键字</label>
+						<input class="ui-input" name="keyword" id="keyword" value="${form.keyword }" type="text"/>
+					</div>
+					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
+					<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
+					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span> 导出</button>
+					<button type="button" id="add" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus"></span> 添加会员</button>		
 				</form>
 			</div>
 		</div>
@@ -83,15 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tbody>
 					<c:forEach items="${mList }" var="m" varStatus="i">
 						<c:choose>
-							<c:when test="${i.count % 2 != 1 }">
-								<tr class="active">
-							</c:when>
-							<c:otherwise>
-								<tr>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
 							<c:when test="${fn:length(m.memberCards) > 1 }">
+								<tr>
 									<td rowspan="${fn:length(m.memberCards) }"><input type="checkbox" /></td>
 									<td rowspan="${fn:length(m.memberCards) }"><a href="#">${m.member.name }</a></td>
 									<td rowspan="${fn:length(m.memberCards) }">
@@ -134,6 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
+								<tr>
 									<td><input type="checkbox" /></td>
 									<td><a href="#">${m.member.name }</a></td>
 									<td>
@@ -171,14 +170,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:choose>
 					</c:forEach>
 				</tbody>
+				<tr>
+					<td colspan="10">
+						<jsp:include page="../comm/page.jsp"></jsp:include>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/layer/layer.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$(document).on('scroll', function(){
-				
+			var site = 'http://' + document.domain + '/';
+			layer.use('extend/layer.ext.js'); //载入拓展模块
+			$('#add').on('click', function(){
+				var i = $.layer({
+					type: 1,
+					title: "添加会员",
+					closeBtn: true,
+					border : [5, 0.5, '#666', true],
+					offset : ['100px',''],
+					area: ['212px','auto'],
+					page: {
+						html: '<div class="ui-tiptext-container ui-tiptext-container-message"><p class="ui-tiptext ui-tiptext-message"><i class="ui-tiptext-icon iconfont" title="提示">&#xF046;</i>此服务支付宝不收取任何费用。</p></div>'
+					}
+				});
 			});
 		});
 	</script>
