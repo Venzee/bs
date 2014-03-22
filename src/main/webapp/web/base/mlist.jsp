@@ -178,25 +178,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/layer/layer.min.js"></script>
+	<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-style/1.0.0/seajs-style.js"></script>
 	<script type="text/javascript">
-		$(function(){
-			var site = 'http://' + document.domain + '/';
-			layer.use('extend/layer.ext.js'); //载入拓展模块
-			$('#add').on('click', function(){
-				var i = $.layer({
-					type: 1,
-					title: "添加会员",
-					closeBtn: true,
-					border : [5, 0.5, '#666', true],
-					offset : ['100px',''],
-					area: ['212px','auto'],
-					page: {
-						html: '<div class="ui-tiptext-container ui-tiptext-container-message"><p class="ui-tiptext ui-tiptext-message"><i class="ui-tiptext-icon iconfont" title="提示">&#xF046;</i>此服务支付宝不收取任何费用。</p></div>'
-					}
-				});
+		seajs.config({
+			alias : {
+				'$' : 'gallery/jquery/1.7.2/jquery',
+				'confirmbox' : 'arale/dialog/1.2.6/confirmbox',
+				'dialog' : 'arale/dialog/1.2.6/dialog'
+			}
+		});
+		seajs.use('arale/dialog/1.2.6/dialog.css');
+		seajs.use('dialog', function(Dialog) {
+			var o = new Dialog({
+				trigger : '#add',
+				content : './web/base/addm.jsp'
 			});
+		});
+		seajs.use('confirmbox', function(Confirmbox) {
+			//Confirmbox.alert('xxx');
 		});
 	</script>
 </body>
