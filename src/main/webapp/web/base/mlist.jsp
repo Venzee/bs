@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 .container {
 	margin: 0 auto;
-	min-width: 1000px;
+	min-width: 900px;
 	max-width: 1360px;
 	padding: 15px;
 }
@@ -191,6 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		seajs.use('dialog', function(Dialog) {
 			var o = new Dialog({
 				trigger : '#add',
+				width : '700px',
 				content : './web/base/addm.jsp'
 			});
 		});

@@ -40,42 +40,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    </p>
 				</div>
 			</div>
-			<div class="ui-box-content">
-		        <form class="ui-form" name="" method="post" action="#" id="">
-					<fieldset>
-						<div class="ui-form-item">
+			<form class="ui-form" name="member-form" action="m/add" method="post">
+				<fieldset>
+					<div class="ui-box-content">
+						<div class="ui-form-item ui-form-inline">
 							<label for="name" class="ui-label">
 								<span class="ui-form-required">*</span>姓名
 							</label>
 							<input class="ui-input" id="name" name="name" type="text">
-							<p class="ui-form-explain">默认文案。</p>
-						</div>
-						
-						<div class="ui-form-item">
-							<label for="sex" class="ui-label">
-								<span class="ui-form-required">*</span>性别
-							</label>
+							<span class="ui-input-pre"><span class="ui-form-required">*</span>性别</span>
 							<select id="sex" name="sex">
 							    <option value="0" selected="selected">女</option>
 							    <option value="1">男</option>
 							</select>
+							<span class="ui-input-pre"><span class="ui-form-required">*</span>手机</span>
+							<input class="ui-input" id="mobile" name="mobile" type="text"/>
+						</div>
+						<div class="ui-form-item">
+							<label for="password" class="ui-label">密码</label>
+							<input class="ui-input" id="password" name="password" type="password"/>
+							<span class="ui-form-other"><a href="#">如需要密码请至少输入4位</a></span>
+						</div>
+					</div>
+					<div class="ui-box-content">
+						<div class="ui-form-item">
+							<label for="cardno" class="ui-label">卡账户</label>
 						</div>
 						
-						<div class="ui-form-item">
-							<label for="mobile" class="ui-label">
-								<span class="ui-form-required">*</span>手机
+						<div class="ui-form-item ui-form-inline">
+							<label for="cardno" class="ui-label">
+								<span class="ui-form-required">*</span>卡号
 							</label>
-							<input class="ui-input" id="mobile" name="mobile" type="text">
-							<p class="ui-form-explain">例:13800138000</p>
+							<input class="ui-input" id="cardno" name="cardno" type="text"/>
+							<span class="ui-input-pre"><span class="ui-form-required">*</span>卡类型</span>
+							<select id="cardType" name="cardTypeId">
+							    <option value="0">请选择</option>
+								<option value="1">钻石卡</option>
+								<option value="2">铂金卡</option>
+							</select>
+							<span class="ui-input-pre"><span class="ui-form-required">*</span>折扣</span>
+							<input class="ui-input" id="discount" name="discount" type="text"/>
 						</div>
-			
+						<div class="ui-form-item">
+							<label for="cardType" class="ui-label">失效日期</label>
+							<input class="ui-input" id="expireDate" name="expireDate" type="text"/>
+						</div>
+					</div>
+					<div class="ui-box-content">
+						<div class="ui-form-item">
+							<label for="costFee" class="ui-label">工本费</label>
+						</div>
+						<div class="ui-form-item ui-form-inline">
+							<label for="costFee" class="ui-label">现金付</label>
+							<input class="ui-input" id="costFee" name="costFee" type="text"/>
+							<span class="ui-input-pre">银联付</span>
+							<input class="ui-input" id="discount" name="discount" type="text"/>
+						</div>
+					</div>
+					<div class="ui-box-content">
+						<div class="ui-form-item">
+							<label for="cashPay" class="ui-label">充值明细</label>
+						</div>
+						<div class="ui-form-item ui-form-inline">
+							<label for="cashPay" class="ui-label">现金付</label>
+							<input class="ui-input" id="cashPay" name="cashPay" type="text"/>
+							<span class="ui-input-pre">银联付</span>
+							<input class="ui-input" id="unionPay" name="unionPay" type="text"/>
+							<span class="ui-input-pre">赠送金</span>
+							<input class="ui-input" id="presentFee" name="presentFee" type="text"/>
+						</div>
+					</div>
+					<div class="ui-box-content">
 						<div class="ui-form-item">
 							<input type="submit" class="ui-button ui-button-morange" value="确定">
 							<input type="button" class="ui-button ui-button-mwhite" value="取消">
 						</div>
-					</fieldset>
-				</form>
-			</div>
+					</div>
+				</fieldset>
+			</form>
 	    </div>
 	</div>
 	
@@ -92,6 +134,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		seajs.use('select', function(Select) {
 			new Select({
 			    trigger: '#sex'
+			}).render();
+			new Select({
+			    trigger: '#cardType'
 			}).render();
 		});
 	</script>

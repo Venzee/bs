@@ -113,6 +113,10 @@ sub {
 	bottom: -0.25em;
 }
 
+a {
+	color: #08c;
+}
+
 /* 正常链接 未访问 */
 a:link {
 	color: #08c;
@@ -9170,6 +9174,7 @@ a.ui-button-sgreen {
 	margin-top: 6px;
 	*display: inline;
 	*zoom: 1;
+	font-size: 14px;
 }
 
 .ui-form-item:after {
@@ -9181,7 +9186,7 @@ a.ui-button-sgreen {
 }
 
 .ui-form-item {
-	padding: 0 5px 20px 170px;
+	padding: 0 5px 10px 80px;
 	zoom: 1;
 }
 
@@ -9228,10 +9233,20 @@ a.ui-button-sgreen {
 .ui-form-inline {
 	display: inline-block;
 	*display: inline;
-	color: #595959;
+	color: #000;
 }
 
 .ui-form-inline * {
+	vertical-align: middle;
+}
+
+.ui-input-pre {
+	font-size: 14px;
+	height: 18px;
+	padding: 6px;
+	line-height: 18px;
+	display: inline-block;
+	*display: inline;
 	vertical-align: middle;
 }
 
