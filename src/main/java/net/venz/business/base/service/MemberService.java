@@ -26,6 +26,7 @@ public class MemberService {
 
 	public int addMember(Member member, MemberCard memberCard) {
 		member.setJoinDate(DataUtil.getCurrDateTimeStr());
+		member.setBirth("1900-01-01");
 		int id = memberDao.addMember(DataUtil.parseObjectToMap(member, Member.class));
 		if (id != 0) {
 			memberCard.setMemberId(id);
