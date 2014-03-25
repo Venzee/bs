@@ -47,18 +47,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<label for="name" class="ui-label">
 								<span class="ui-form-required">*</span>姓名
 							</label>
-							<input class="ui-input" id="name" name="name" type="text">
+							<input class="ui-input" id="name" name="m.name" type="text">
 							<span class="ui-input-pre"><span class="ui-form-required">*</span>性别</span>
-							<select id="sex" name="sex">
+							<select id="sex" name="m.sex">
 							    <option value="0" selected="selected">女</option>
 							    <option value="1">男</option>
 							</select>
 							<span class="ui-input-pre"><span class="ui-form-required">*</span>手机</span>
-							<input class="ui-input" id="mobile" name="mobile" type="text"/>
+							<input class="ui-input" id="mobile" name="m.mobile" type="text"/>
 						</div>
 						<div class="ui-form-item">
 							<label for="password" class="ui-label">密码</label>
-							<input class="ui-input" id="password" name="password" type="password"/>
+							<input class="ui-input" id="password" name="m.password" type="password"/>
 							<span class="ui-form-other"><a href="#">如需要密码请至少输入4位</a></span>
 						</div>
 					</div>
@@ -71,19 +71,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<label for="cardno" class="ui-label">
 								<span class="ui-form-required">*</span>卡号
 							</label>
-							<input class="ui-input" id="cardno" name="cardno" type="text"/>
+							<input class="ui-input" id="cardno" name="mc.cardNo" type="text"/>
 							<span class="ui-input-pre"><span class="ui-form-required">*</span>卡类型</span>
-							<select id="cardType" name="cardTypeId">
+							<select id="cardType" name="mc.cardTypeId">
 							    <option value="0">请选择</option>
 								<option value="1">钻石卡</option>
 								<option value="2">铂金卡</option>
 							</select>
-							<span class="ui-input-pre"><span class="ui-form-required">*</span>折扣</span>
-							<input class="ui-input" id="discount" name="discount" type="text"/>
+							<span class="ui-input-pre">失效日期</span>
+							<input class="ui-input" id="expireDate" name="mc.expireDate" type="text"/>
 						</div>
 						<div class="ui-form-item">
-							<label for="cardType" class="ui-label">失效日期</label>
-							<input class="ui-input" id="expireDate" name="expireDate" type="text"/>
+							<label for="discount" class="ui-label"><span class="ui-form-required">*</span>消费折扣</label>
+							<input class="ui-input" id="discount" name="mc.consumeDiscount" type="text"/>
+							<span class="ui-input-pre"><span class="ui-form-required">*</span>卖品折扣</span>
+							<input class="ui-input" name="mc.goodsDiscount" type="text"/>
 						</div>
 					</div>
 					<div class="ui-box-content">
@@ -92,22 +94,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="ui-form-item ui-form-inline">
 							<label for="costFee" class="ui-label">现金付</label>
-							<input class="ui-input" id="costFee" name="costFee" type="text"/>
+							<input class="ui-input" id="costFee" name="c_ledg.cashPay" value="0" type="text"/>
 							<span class="ui-input-pre">银联付</span>
-							<input class="ui-input" id="discount" name="discount" type="text"/>
+							<input class="ui-input" name="c_ledg.unionPay" value="0" type="text"/>
 						</div>
 					</div>
 					<div class="ui-box-content">
 						<div class="ui-form-item">
-							<label for="cashPay" class="ui-label">充值明细</label>
+							<label for="recharge" class="ui-label">充值明细</label>
 						</div>
 						<div class="ui-form-item ui-form-inline">
 							<label for="cashPay" class="ui-label">现金付</label>
-							<input class="ui-input" id="cashPay" name="cashPay" type="text"/>
+							<input class="ui-input" id="recharge" name="r_ledg.cashPay" value="0" type="text"/>
 							<span class="ui-input-pre">银联付</span>
-							<input class="ui-input" id="unionPay" name="unionPay" type="text"/>
+							<input class="ui-input" name="r_ledg.unionPay" value="0" type="text"/>
 							<span class="ui-input-pre">赠送金</span>
-							<input class="ui-input" id="presentFee" name="presentFee" type="text"/>
+							<input class="ui-input" name="mc.presentFee" value="0" type="text"/>
 						</div>
 					</div>
 					<div class="ui-box-content">

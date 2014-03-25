@@ -24,7 +24,7 @@ public class MemberService {
 	@Autowired
 	private MemberCardDao memberCardDao;
 
-	public void addMember(Member member, MemberCard memberCard) {
+	public int addMember(Member member, MemberCard memberCard) {
 		member.setJoinDate(DataUtil.getCurrDateTimeStr());
 		int id = memberDao.addMember(DataUtil.parseObjectToMap(member, Member.class));
 		if (id != 0) {
@@ -34,13 +34,15 @@ public class MemberService {
 				memberCard.setExpireDate(null);
 			}
 			memberCardDao.addMemberCard(DataUtil.parseObjectToMap(memberCard, MemberCard.class));
+			return 0;
 		}
+		return -1;
 	}
 
 	public int countMemberList(MemberForm form) {
 		Map<String, Object> data = new HashMap<String, Object>();
-		if(!DataUtil.isEmptyStr(form.getKeyword())){
-			data.put("keyword", form.getKeyword());
+		if(!DataUtil.isEmptyStr(form.getW())){
+			data.put("keyword", form.getW());
 		}
 		int count = memberDao.countMemberList(data);
 		return count;
@@ -50,8 +52,8 @@ public class MemberService {
 		Map<String, Object> data = new HashMap<String, Object>();
 		List<MemberForm> memberList = new ArrayList<MemberForm>();
 		
-		if(!DataUtil.isEmptyStr(form.getKeyword())){
-			data.put("keyword", form.getKeyword());
+		if(!DataUtil.isEmptyStr(form.getW())){
+			data.put("keyword", form.getW());
 		}
 		List<Map<String, Object>> dataList = memberDao.getMemberListPage(data, page);
 		
@@ -66,8 +68,8 @@ public class MemberService {
 				memberCards.add(memberCard);
 			}
 			
-			memberForm.setMember(member);
-			memberForm.setMemberCards(memberCards);
+			memberForm.setM(member);
+			memberForm.setMc_list(memberCards);
 			memberList.add(memberForm);
 		}
 		return memberList;

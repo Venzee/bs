@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<form action="m/list" method="get" class="ui-form">
 					<div class="ui-form-inline">
 						<label for="keyword">关键字</label>
-						<input class="ui-input" name="keyword" id="keyword" value="${form.keyword }" type="text"/>
+						<input class="ui-input" name="w" id="keyword" value="${foro.keyword }" type="text"/>
 					</div>
 					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
 					<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
@@ -86,35 +86,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${mList }" var="m" varStatus="i">
+					<c:forEach items="${mList }" var="o" varStatus="i">
 						<c:choose>
-							<c:when test="${fn:length(m.memberCards) > 1 }">
+							<c:when test="${fn:length(o.mc_list) > 1 }">
 								<tr>
-									<td rowspan="${fn:length(m.memberCards) }"><input type="checkbox" /></td>
-									<td rowspan="${fn:length(m.memberCards) }"><a href="#">${m.member.name }</a></td>
-									<td rowspan="${fn:length(m.memberCards) }">
+									<td rowspan="${fn:length(o.mc_list) }"><input type="checkbox" /></td>
+									<td rowspan="${fn:length(o.mc_list) }"><a href="#">${o.m.name }</a></td>
+									<td rowspan="${fn:length(o.mc_list) }">
 										<c:choose>
-											<c:when test="${m.member.sex == 1 }">男</c:when>
+											<c:when test="${o.m.sex == 1 }">男</c:when>
 											<c:otherwise>女</c:otherwise>
 										</c:choose>
 									</td>
-									<td rowspan="${fn:length(m.memberCards) }">${m.member.mobile }</td>
-									<td class="warning">${m.memberCards[0].cardNo }</td>
-									<td class="warning">${m.memberCards[0].cardTypeId }</td>
+									<td rowspan="${fn:length(o.mc_list) }">${o.m.mobile }</td>
+									<td class="warning">${o.mc_list[0].cardNo }</td>
+									<td class="warning">${o.mc_list[0].cardTypeId }</td>
 									<td class="warning">
-										[项目:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
-										[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
+										[项目:<c:if test="${o.mc_list[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${o.mc_list[0].consumeDiscount != 0 }"><span class="text-danger">${o.mc_list[0].consumeDiscount }</span>折</c:if>]<br/>
+										[卖品:<c:if test="${o.mc_list[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${o.mc_list[0].goodsDiscount != 0 }"><span class="text-danger">${o.mc_list[0].goodsDiscount }</span>折</c:if>]
 									</td>
 									<td class="warning">
-										[储值余额:<span class="text-danger">${m.memberCards[0].cardFee }</span>元];
-										[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元]<br/>
-										[疗程余额:<span class="text-danger">${m.memberCards[0].treatFee }</span>元];
-										[疗程赠送:<span class="text-danger">${m.memberCards[0].treatPresentFee }</span>元]
+										[储值余额:<span class="text-danger">${o.mc_list[0].cardFee }</span>元];
+										[赠送余额:<span class="text-danger">${o.mc_list[0].presentFee }</span>元]<br/>
+										[疗程余额:<span class="text-danger">${o.mc_list[0].treatFee }</span>元];
+										[疗程赠送:<span class="text-danger">${o.mc_list[0].treatPresentFee }</span>元]
 									</td>
-									<td rowspan="${fn:length(m.memberCards) }">${fn:substring(m.member.joinDate,0,10) }</td>
-									<td rowspan="${fn:length(m.memberCards) }">${fn:substring(m.member.lastConsumeDate,0,10) }</td>
+									<td rowspan="${fn:length(o.mc_list) }">${fn:substring(o.m.joinDate,0,10) }</td>
+									<td rowspan="${fn:length(o.mc_list) }">${fn:substring(o.m.lastConsumeDate,0,10) }</td>
 								</tr>
-								<c:forEach items="${m.memberCards }" var="c" begin="1">
+								<c:forEach items="${o.mc_list }" var="c" begin="1">
 									<tr class="warning">
 										<td>${c.cardNo }</td>
 										<td>${c.cardTypeId }</td>
@@ -134,27 +134,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<c:otherwise>
 								<tr>
 									<td><input type="checkbox" /></td>
-									<td><a href="#">${m.member.name }</a></td>
+									<td><a href="#">${o.m.name }</a></td>
 									<td>
 										<c:choose>
-											<c:when test="${m.member.sex == 1 }">男</c:when>
+											<c:when test="${o.m.sex == 1 }">男</c:when>
 											<c:otherwise>女</c:otherwise>
 										</c:choose>
 									</td>
-									<td>${m.member.mobile }</td>
+									<td>${o.m.mobile }</td>
 									<c:choose>
-										<c:when test="${fn:length(m.memberCards) > 0 }">
-											<td class="warning">${m.memberCards[0].cardNo }</td>
-											<td class="warning">${m.memberCards[0].cardTypeId }</td>
+										<c:when test="${fn:length(o.mc_list) > 0 }">
+											<td class="warning">${o.mc_list[0].cardNo }</td>
+											<td class="warning">${o.mc_list[0].cardTypeId }</td>
 											<td class="warning">
-												[项目:<c:if test="${m.memberCards[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].consumeDiscount != 0 }"><span class="text-danger">${m.memberCards[0].consumeDiscount }</span>折</c:if>]<br/>
-												[卖品:<c:if test="${m.memberCards[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${m.memberCards[0].goodsDiscount != 0 }"><span class="text-danger">${m.memberCards[0].goodsDiscount }</span>折</c:if>]
+												[项目:<c:if test="${o.mc_list[0].consumeDiscount == 0 }">无折扣</c:if><c:if test="${o.mc_list[0].consumeDiscount != 0 }"><span class="text-danger">${o.mc_list[0].consumeDiscount }</span>折</c:if>]<br/>
+												[卖品:<c:if test="${o.mc_list[0].goodsDiscount == 0 }">无折扣</c:if><c:if test="${o.mc_list[0].goodsDiscount != 0 }"><span class="text-danger">${o.mc_list[0].goodsDiscount }</span>折</c:if>]
 											</td>
 											<td class="warning">
-												[储值余额:<span class="text-danger">${m.memberCards[0].cardFee }</span>元];
-												[赠送余额:<span class="text-danger">${m.memberCards[0].presentFee }</span>元]<br/>
-												[疗程余额:<span class="text-danger">${m.memberCards[0].treatFee }</span>元];
-												[疗程赠送:<span class="text-danger">${m.memberCards[0].treatPresentFee }</span>元]
+												[储值余额:<span class="text-danger">${o.mc_list[0].cardFee }</span>元];
+												[赠送余额:<span class="text-danger">${o.mc_list[0].presentFee }</span>元]<br/>
+												[疗程余额:<span class="text-danger">${o.mc_list[0].treatFee }</span>元];
+												[疗程赠送:<span class="text-danger">${o.mc_list[0].treatPresentFee }</span>元]
 											</td>
 										</c:when>
 										<c:otherwise>
@@ -163,8 +163,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</td>
 										</c:otherwise>
 									</c:choose>
-									<td>${fn:substring(m.member.joinDate,0,10) }</td>
-									<td>${fn:substring(m.member.lastConsumeDate,0,10) }</td>
+									<td>${fn:substring(o.m.joinDate,0,10) }</td>
+									<td>${fn:substring(o.m.lastConsumeDate,0,10) }</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>

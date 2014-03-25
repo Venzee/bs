@@ -3,44 +3,64 @@ package net.venz.business.base.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import net.venz.business.fina.entity.Ledger;
+
 public class MemberForm implements Serializable {
 
 	private static final long serialVersionUID = -7629539954699763924L;
-	private String keyword;
-	private Member member;
-	private MemberCard memberCard;
-	private List<MemberCard> memberCards;
+	private String w; // 关键字
+	private Member m; // 会员
+	private MemberCard mc; // 会员卡
+	private Ledger c_ledg; // 工本费流水账
+	private Ledger r_ledg; // 充值流水账
+	private List<MemberCard> mc_list; // 卡列表
 
-	public String getKeyword() {
-		return keyword;
+	public String getW() {
+		return w;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setW(String w) {
+		this.w = w;
 	}
 
-	public Member getMember() {
-		return member;
+	public Member getM() {
+		return m;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setM(Member m) {
+		this.m = m;
 	}
 
-	public MemberCard getMemberCard() {
-		return memberCard;
+	public MemberCard getMc() {
+		return mc;
 	}
 
-	public void setMemberCard(MemberCard memberCard) {
-		this.memberCard = memberCard;
+	public void setMc(MemberCard mc) {
+		this.mc = mc;
 	}
 
-	public List<MemberCard> getMemberCards() {
-		return memberCards;
+	public Ledger getC_ledg() {
+		return c_ledg;
 	}
 
-	public void setMemberCards(List<MemberCard> memberCards) {
-		this.memberCards = memberCards;
+	public void setC_ledg(Ledger c_ledg) {
+		this.c_ledg = c_ledg;
+	}
+
+	public Ledger getR_ledg() {
+		return r_ledg;
+	}
+
+	public void setR_ledg(Ledger r_ledg) {
+		this.r_ledg = r_ledg;
+	}
+
+	public List<MemberCard> getMc_list() {
+		return mc_list;
+	}
+
+	public void setMc_list(List<MemberCard> mc_list) {
+		this.mc_list = mc_list;
 	}
 
 }

@@ -3,7 +3,8 @@ package net.venz.business.base.entity;
 import java.io.Serializable;
 
 /**
- * 会员卡 数据库表名：base_member_card
+ * 会员卡 
+ * 数据库表名：base_member_card
  * 
  * @author Venz
  * 
