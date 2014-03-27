@@ -191,7 +191,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		seajs.use('dialog', function(Dialog) {
 			var o = new Dialog({
 				trigger : '#add',
-				width : '700px',
+				width : '500px',
+				initialHeight : '472px',
+				effect : 'fade',
 				content : './web/base/addm.jsp'
 			});
 		});
