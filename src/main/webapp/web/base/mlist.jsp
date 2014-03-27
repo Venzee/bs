@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var o = new Dialog({
 				trigger : '#add',
 				width : '500px',
-				initialHeight : '472px',
+				initialHeight : '435px',
 				effect : 'fade',
 				content : './web/base/addm.jsp'
 			});

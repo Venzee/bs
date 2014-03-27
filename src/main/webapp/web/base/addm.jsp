@@ -23,8 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	max-width: 1360px;
 	padding: 15px;
 }
-.ui-box-content {
-	width: 478px;
+.ui-switchable-panel {
+	width: 498px;
+	float: left;
 }
 </style>
 </head>
@@ -35,40 +36,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <h3 class="ui-box-head-title">添加会员</h3>
 	    </div>
 	    <div class="ui-box-container">
-	    	<br/>
-	    	<ol class="ui-step ui-step-blue ui-step-3">
-			    <li class="ui-step-start ui-step-active">
-			        <div class="ui-step-line">-</div>    
-			        <div class="ui-step-icon">        
-			            <i class="iconfont">&#x0079;</i>
-			            <i class="ui-step-number">1</i>
-			            <span class="ui-step-text">基本信息</span>
-			        </div>
-			    </li>
-			    <li>
-			        <div class="ui-step-line">-</div>    
-			        <div class="ui-step-icon">
-			            <i class="iconfont">&#x0079;</i>
-			            <i class="ui-step-number">2</i>
-			            <span class="ui-step-text">卡账户</span>
-			        </div>
-			    </li>
-			    <li class="ui-step-end">
-			        <div class="ui-step-line">-</div>    
-			        <div class="ui-step-icon">
-			            <i class="iconfont">&#x0079;</i>
-			            <i class="iconfont ui-step-number">&#xF029;</i>
-			            <span class="ui-step-text">完成</span>
-			        </div>
-			    </li>
-			</ol>
 	    	<div class="ui-box-content">
-		    	<div class="ui-tiptext-container ui-tiptext-container-message">
-				    <p class="ui-tiptext ui-tiptext-message">
-				        <i class="ui-tiptext-icon iconfont" title="提示">&#xF046;</i>
-				        <span class="ui-form-required">*</span>号的为必填项
-				    </p>
-				</div>
+		    	<ol class="ui-step ui-step-blue ui-step-3" id="member-step">
+				    <li class="ui-step-start ui-step-active">
+				        <div class="ui-step-line">-</div>    
+				        <div class="ui-step-icon">        
+				            <i class="iconfont">&#x0079;</i>
+				            <i class="ui-step-number">1</i>
+				            <span class="ui-step-text">基本信息</span>
+				        </div>
+				    </li>
+				    <li>
+				        <div class="ui-step-line">-</div>    
+				        <div class="ui-step-icon">
+				            <i class="iconfont">&#x0079;</i>
+				            <i class="ui-step-number">2</i>
+				            <span class="ui-step-text">卡账户</span>
+				        </div>
+				    </li>
+				    <li class="ui-step-end">
+				        <div class="ui-step-line">-</div>    
+				        <div class="ui-step-icon">
+				            <i class="iconfont">&#x0079;</i>
+				            <i class="iconfont ui-step-number">&#xF029;</i>
+				            <span class="ui-step-text">完成</span>
+				        </div>
+				    </li>
+				</ol>
 			</div>
 			<form class="ui-form" id="member-form" name="member-form" action="m/add" method="post" data-widget="validator">
 				<fieldset>
@@ -77,22 +71,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="ui-box-content">
 								<div class="ui-form-item">
 									<label for="name" class="ui-label"><span class="ui-form-required">*</span>姓名：</label>
-									<input class="ui-input" id="name" name="m.name" type="text" required data-display="姓名"/>
+									<input class="ui-input" id="name" name="m.name" type="text" required/>
 								</div>
 								<div class="ui-form-item ui-form-inline">
 									<label class="ui-label"><span class="ui-form-required">*</span>性别：</label>
-									<input id="male" value="0" name="m.sex" type="radio" required data-display="性别"/>
+									<input id="male" value="0" name="m.sex" type="radio" checked="checked"/>
 									<label for="male">女</label>
 									<input id="female" value="1" name="m.sex" type="radio"/>
 									<label for="female">男</label>
 								</div>
 								<div class="ui-form-item">
 									<label for="mobile" class="ui-label"><span class="ui-form-required">*</span>手机：</label>
-									<input class="ui-input" id="mobile" name="m.mobile" type="text" required data-display="手机"/>
+									<input class="ui-input" id="mobile" name="m.mobile" type="text" required/>
 								</div>
 								<div class="ui-form-item">
 									<label for="password" class="ui-label">密码：</label>
-									<input class="ui-input" id="password" name="m.password" type="password" minlength="5" maxlength="20" data-display="密码"/>
+									<input class="ui-input" id="password" name="m.password" type="password" minlength="4" maxlength="20"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="birth" class="ui-label">生日：</label>
@@ -104,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="ui-box-content">
 								<div class="ui-form-item">
 									<label for="cardno" class="ui-label"><span class="ui-form-required">*</span>卡号：</label>
-									<input class="ui-input" id="cardno" name="mc.cardNo" type="text" required data-display="卡号"/>
+									<input class="ui-input" id="cardno" name="mc.cardNo" type="text" required/>
 								</div>
 								<div class="ui-form-item">
 									<label for="cardType" class="ui-label"><span class="ui-form-required">*</span>卡类型：</label>
@@ -115,16 +109,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</select>
 								</div>
 								<div class="ui-form-item">
-									<label for="expireDate" class="ui-label">失效日期</label>
+									<label for="expireDate" class="ui-label">失效日期：</label>
 									<input class="ui-input" id="expireDate" name="mc.expireDate" type="text"/>
 								</div>
 								<div class="ui-form-item">
-									<label for="consumeDiscount" class="ui-label"><span class="ui-form-required">*</span>消费折扣</label>
-									<input class="ui-input" id="discount" name="mc.consumeDiscount" type="number" required max="10" min="0" data-display="消费折扣"/>
+									<label for="consumeDiscount" class="ui-label"><span class="ui-form-required">*</span>消费折扣：</label>
+									<input class="ui-input" id="consumeDiscount" name="mc.consumeDiscount" type="text" required max="10" min="0"/>
 								</div>
 								<div class="ui-form-item">
-									<label for="goodsDiscount" class="ui-label"><span class="ui-form-required">*</span>卖品折扣</label>
-									<input class="ui-input" name="mc.goodsDiscount" type="number" required max="10" min="0" data-display="卖品折扣"/>
+									<label for="goodsDiscount" class="ui-label"><span class="ui-form-required">*</span>卖品折扣：</label>
+									<input class="ui-input" id="goodsDiscount" name="mc.goodsDiscount" type="text" required max="10" min="0"/>
 								</div>
 							</div>
 						</div>
@@ -134,23 +128,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<label class="ui-label">工本费</label>
 								</div>
 								<div class="ui-form-item ui-form-inline">
-									<label for="costFee" class="ui-label">现金付</label>
-									<input class="ui-input" id="costFee" name="c_ledg.cashPay" value="0" type="number"/>
-									<span class="ui-input-pre">银联付</span>
-									<input class="ui-input" name="c_ledg.unionPay" value="0" type="number"/>
+									<label for="costFee_cashPay" class="ui-label">现金付：</label>
+									<input class="ui-input" id="costFee_cashPay" name="c_ledg.cashPay" value="0" type="text" min="0"/>
+									<label for="costFee_unionPay" class="ui-input-pre">银联付：</label>
+									<input class="ui-input" id="costFee_unionPay" name="c_ledg.unionPay" value="0" type="text" min="0"/>
 								</div>
 								<div class="ui-form-item">
 									<label class="ui-label">充值明细</label>
 								</div>
 								<div class="ui-form-item">
-									<label for="recharge" class="ui-label">现金付</label>
-									<input class="ui-input" id="recharge" name="r_ledg.cashPay" value="0" type="number"/>
-									<span class="ui-input-pre">银联付</span>
-									<input class="ui-input" name="r_ledg.unionPay" value="0" type="number"/>
+									<label for="recharge_cashPay" class="ui-label">现金付：</label>
+									<input class="ui-input" id="recharge_cashPay" name="r_ledg.cashPay" value="0" type="text" min="0"/>
+									<label for="recharge_unionPay" class="ui-input-pre">银联付：</label>
+									<input class="ui-input" id="recharge_unionPay" name="r_ledg.unionPay" value="0" type="text" min="0"/>
 								</div>
 								<div class="ui-form-item">
-									<label for="presentFee" class="ui-label">赠送金</label>
-									<input class="ui-input" id="presentFee" name="mc.presentFee" value="0" type="number"/>
+									<label for="presentFee" class="ui-label">赠送金：</label>
+									<input class="ui-input" id="presentFee" name="mc.presentFee" value="0" type="text" min="0"/>
 								</div>
 							</div>
 						</div>
@@ -159,9 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ui-box-content">
 					<div class="ui-form-item">
 						<div class="fn-right">
-							<input type="button" class="ui-button ui-button-morange btn-prev ui-switchable-prev-btn" data-switchable-role="prev" value="上一步">
-							<input type="button" class="ui-button ui-button-morange btn-next ui-switchable-next-btn" data-switchable-role="next" value="下一步">
-							<input type="submit" class="ui-button ui-button-morange" value="确定">
+							<input type="button" id="btn-prev" class="ui-button ui-button-morange ui-switchable-prev-btn" data-switchable-role="prev" value="上一步">
+							<input type="button" id="btn-next" class="ui-button ui-button-morange ui-switchable-next-btn" data-switchable-role="next" value="下一步">
+							<input type="submit" id="btn-submit" class="ui-button ui-button-morange" value="确定">
 						</div>
 					</div>
 				</div>
@@ -198,18 +192,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        easing: 'easeOutStrong',
 			        effect: 'scrollx',
 			        step: 1,
-			        viewSize: [498],
+			        viewSize: [498, 435],
 			        circular: false,
 			        autoplay: false
 			    }).render();
-		    	
-		        // 绑定上一步下一步按钮事件
-		        /*$('input.btn-next').on('click', function(){
-		        	$(this).parents('div.ui-box-content').addClass('fn-hide').next().removeClass('fn-hide');
+		        var m_step = $('#member-step');
+		        c.on('switch', function(toIndex, fromIndex) {
+		        	/*if(toIndex === 0){
+		        		$('#btn-prev').addClass('fn-hide');
+		        		$('#btn-next').removeClass('fn-hide');
+		        		$('#btn-submit').addClass('fn-hide');
+		        	}
+		        	if(toIndex === 1){
+		        		$('#btn-prev').removeClass('fn-hide');
+		        		$('#btn-next').removeClass('fn-hide');
+		        		$('#btn-submit').addClass('fn-hide');
+		        	}
+					if(toIndex === 2){
+						$('#btn-prev').removeClass('fn-hide');
+		        		$('#btn-next').addClass('fn-hide');
+		        		$('#btn-submit').removeClass('fn-hide');
+		        	}*/
+		        	if(toIndex > fromIndex){
+		        		m_step.find('li:eq(' + fromIndex + ')').removeClass('ui-step-active').addClass('ui-step-done');
+		        		m_step.find('li:eq(' + toIndex + ')').addClass('ui-step-active');
+		        	}else{
+		        		m_step.find('li:eq(' + fromIndex + ')').removeClass('ui-step-active').removeClass('ui-step-done');
+		        		m_step.find('li:eq(' + toIndex + ')').removeClass('ui-step-done').addClass('ui-step-active');
+		        	}
 		        });
-				$('input.btn-prev').on('click', function(){
-					$(this).parents('div.ui-box-content').addClass('fn-hide').prev().removeClass('fn-hide');
-		        });*/
 		    });
 		});
 	</script>
