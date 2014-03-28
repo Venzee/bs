@@ -50,18 +50,138 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="container">
 		<div class="ui-box">
-		    <div class="ui-box-content">
-				<form action="m/list" method="get" class="ui-form">
+			<form action="m/list" method="get" class="ui-form">
+			    <div class="ui-box-content">
 					<div class="ui-form-inline">
 						<label for="keyword">关键字</label>
 						<input class="ui-input" name="w" id="keyword" value="${foro.keyword }" type="text"/>
 					</div>
 					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
-					<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#searchModal"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
+					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
 					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span> 导出</button>
-					<button type="button" id="add" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus"></span> 添加会员</button>		
-				</form>
-			</div>
+					<button type="button" id="add" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> 添加会员</button>
+					<button type="button" id="delete" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> 删除会员</button>		
+					
+				</div>
+				<div class="ui-box-content">
+					<div class="ui-grid-row">
+						<div class="ui-grid-25">
+					    	<div class="ui-form-inline">
+								<label for="cardType">卡类型：</label>
+								<select id="cardType" name="cardTypeId">
+								    <option value="0">请选择</option>
+									<option value="1">钻石卡</option>
+									<option value="2">铂金卡</option>
+								</select>
+							</div>
+							<div class="ui-form-inline">
+								<label for="consumeTimes">消费次数：</label>
+								<input class="ui-input" name="startConsumeTimes" id="consumeTimes" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endConsumeTimes" type="text"/>
+							</div>
+							<div class="ui-form-inline">
+								<label for="consumeDate">最后消费：</label>
+								<input class="ui-input" name="startConsumeDate" id="consumeDate" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endConsumeDate" type="text"/>
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+					    <div class="ui-grid-25">
+					    	<div class="ui-form-inline">
+								<label for="sex">性&nbsp;&nbsp;&nbsp;别：</label>
+								<select id="sex" name="sex">
+									<option value="">请选择</option>
+								    <option value="0">女</option>
+									<option value="1">男</option>
+								</select>
+							</div>
+							<div class="ui-form-inline">
+								<label for="openDate">开卡时间：</label>
+								<input class="ui-input" name="startOpenDate" id="openDate" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endOpenDate" type="text"/>
+							</div>
+							<div class="ui-form-inline">
+								<label for="joinDate">注册时间：</label>
+								<input class="ui-input" name="startJoinDate" id="joinDate" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endJoinDate" type="text"/>
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+					    <div class="ui-grid-25">
+					    	<div class="ui-form-inline">
+								<label for="openEmployee">开卡人：</label>
+								<select id="openEmployee" name="openEmployeeId">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="ui-form-inline">
+								<label for="sumConsumeFee">消费总额：</label>
+								<input class="ui-input" name="startSumConsumeFee" id="sumConsumeFee" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endSumConsumeFee" type="text"/>
+							</div>
+							<div class="ui-form-inline">
+								<label for="sumCardFee">储值总额：</label>
+								<input class="ui-input" name="startSumCardFee" id="sumCardFee" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endSumCardFee" type="text"/>
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+					    <div class="ui-grid-25">
+					    	<div class="ui-form-inline">
+								<label for="level">分&nbsp;&nbsp;&nbsp;类：</label>
+								<select id="level" name="levelId">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="ui-form-inline">
+								<label for="cardFee">储值余额：</label>
+								<input class="ui-input" name="startCardFee" id="cardFee" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endCardFee" type="text"/>
+							</div>
+							<div class="ui-form-inline">
+								<label for="presentFee">赠送余额：</label>
+								<input class="ui-input" name="startPresentFee" id="presentFee" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endPresentFee" type="text"/>
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+					    <div class="ui-grid-25">
+					    	<div class="ui-form-inline">
+								<label for="client">客户端：</label>
+								<select id="client" name="clientStatus">
+									<option value="">请选择</option>
+									<option value="0">已绑定</option>
+									<option value="1">未绑定</option>
+								</select>
+							</div>
+							<div class="ui-form-inline">
+								<label for="birth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
+								<input class="ui-input" name="startBirth" id="birth" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endBirth" type="text"/>
+							</div>
+							<div class="ui-form-inline">
+								<label for="point">积&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：</label>
+								<input class="ui-input" name="startPoint" id="point" type="text"/>
+								<span>&nbsp;至&nbsp;</span>
+								<input class="ui-input" name="endPoint" type="text"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 		<div class="ui-box">
 		    <div class="ui-box-head">
@@ -184,11 +304,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			alias : {
 				'$' : 'gallery/jquery/1.7.2/jquery',
 				'confirmbox' : 'arale/dialog/1.2.6/confirmbox',
-				'dialog' : 'arale/dialog/1.2.6/dialog'
+				'dialog' : 'arale/dialog/1.2.6/dialog',
+				'select' : 'arale/select/0.9.9/select'
 			}
 		});
 		seajs.use('arale/dialog/1.2.6/dialog.css');
-		seajs.use('dialog', function(Dialog) {
+		seajs.use(['dialog', 'select'], function(Dialog, Select) {
 			var o = new Dialog({
 				trigger : '#add',
 				width : '500px',
@@ -196,6 +317,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				effect : 'fade',
 				content : './web/base/addm.jsp'
 			});
+			
+			// Select
+	    	new Select({
+			    trigger: '#cardType'
+			}).render();
+	    	new Select({
+			    trigger: '#sex'
+			}).render();
+	    	new Select({
+			    trigger: '#openEmployee'
+			}).render();
+	    	new Select({
+			    trigger: '#level'
+			}).render();
+	    	new Select({
+			    trigger: '#client'
+			}).render();
+	    	
 		});
 		seajs.use('confirmbox', function(Confirmbox) {
 			//Confirmbox.alert('xxx');

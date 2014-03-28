@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="birth" class="ui-label">生日：</label>
-									<input class="ui-input" id="birth" name="mc.birth" type="date"/>
+									<input class="ui-input" id="birth" name="mc.birth" type="text"/>
 								</div>
 							</div>
 						</div>
@@ -153,9 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="ui-box-content">
 					<div class="ui-form-item">
 						<div class="fn-right">
-							<input type="button" id="btn-prev" class="ui-button ui-button-morange ui-switchable-prev-btn" data-switchable-role="prev" value="上一步">
-							<input type="button" id="btn-next" class="ui-button ui-button-morange ui-switchable-next-btn" data-switchable-role="next" value="下一步">
-							<input type="submit" id="btn-submit" class="ui-button ui-button-morange" value="确定">
+							<button type="button" id="btn-prev" class="btn btn-default btn-sm ui-switchable-prev-btn" data-switchable-role="prev"><span class="glyphicon glyphicon-chevron-left"></span> 上一步</button>
+							<button type="button" id="btn-next" class="btn btn-default btn-sm ui-switchable-next-btn" data-switchable-role="next">下一步 <span class="glyphicon glyphicon-chevron-right"></span></button>
+							<button type="submit" id="btn-submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok-sign"></span> 保&nbsp;&nbsp;&nbsp;存</button>
 						</div>
 					</div>
 				</div>
@@ -186,6 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    	// Validation
 		        Widget.autoRenderAll();
 		        
+		    	// 轮播
 		        var c = new Carousel({
 			        element: '#member-form',
 			        hasTriggers: false,
@@ -196,28 +197,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        circular: false,
 			        autoplay: false
 			    }).render();
-		        var m_step = $('#member-step');
+		        
+		        // 默认按钮状态
+		        $('#btn-prev').hide();
+        		$('#btn-next').show();
+        		$('#btn-submit').hide();
+        		
+        		// 切换事件
+        		var m_step = $('#member-step');
 		        c.on('switch', function(toIndex, fromIndex) {
-		        	/*if(toIndex === 0){
-		        		$('#btn-prev').addClass('fn-hide');
-		        		$('#btn-next').removeClass('fn-hide');
-		        		$('#btn-submit').addClass('fn-hide');
+		        	if(toIndex === 0){
+		        		$('#btn-prev').hide();
+		        		$('#btn-next').show();
+		        		$('#btn-submit').hide();
 		        	}
 		        	if(toIndex === 1){
-		        		$('#btn-prev').removeClass('fn-hide');
-		        		$('#btn-next').removeClass('fn-hide');
-		        		$('#btn-submit').addClass('fn-hide');
+		        		$('#btn-prev').show();
+		        		$('#btn-next').show();
+		        		$('#btn-submit').hide();
 		        	}
 					if(toIndex === 2){
-						$('#btn-prev').removeClass('fn-hide');
-		        		$('#btn-next').addClass('fn-hide');
-		        		$('#btn-submit').removeClass('fn-hide');
-		        	}*/
+						$('#btn-prev').show();
+		        		$('#btn-next').hide();
+		        		$('#btn-submit').show();
+		        	}
 		        	if(toIndex > fromIndex){
 		        		m_step.find('li:eq(' + fromIndex + ')').removeClass('ui-step-active').addClass('ui-step-done');
 		        		m_step.find('li:eq(' + toIndex + ')').addClass('ui-step-active');
 		        	}else{
-		        		m_step.find('li:eq(' + fromIndex + ')').removeClass('ui-step-active').removeClass('ui-step-done');
+		        		m_step.find('li:eq(' + fromIndex + ')').removeClass('ui-step-active');
 		        		m_step.find('li:eq(' + toIndex + ')').removeClass('ui-step-done').addClass('ui-step-active');
 		        	}
 		        });

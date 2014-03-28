@@ -9142,7 +9142,7 @@ a.ui-button-sgreen {
 /*! block alice/form/1.0.2/form-debug.css */
 /* alice.form 样式模块 */
 .ui-form {
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1.5;
 }
 
@@ -9231,6 +9231,7 @@ a.ui-button-sgreen {
 }
 
 .ui-form-inline {
+	padding: 0 5px;
 	display: inline-block;
 	*display: inline;
 	color: #000;

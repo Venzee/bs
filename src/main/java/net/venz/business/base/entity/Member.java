@@ -25,6 +25,7 @@ public class Member implements Serializable {
 	private int consumeTimes; // 消费次数
 	private double sumConsumeFee; // 总消费金额
 	private double sumDebtFee; // 总欠款
+	private int levelId; // 
 	private int introMemberId; // 介绍会员ID
 	private String password; // 密码
 	private String lastConsumeDate; // 最后消费时间
@@ -132,6 +133,14 @@ public class Member implements Serializable {
 
 	public void setSumDebtFee(double sumDebtFee) {
 		this.sumDebtFee = sumDebtFee;
+	}
+
+	public int getLevelId() {
+		return levelId;
+	}
+
+	public void setLevelId(int levelId) {
+		this.levelId = levelId;
 	}
 
 	public int getIntroMemberId() {
