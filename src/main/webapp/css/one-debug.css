@@ -9231,7 +9231,7 @@ a.ui-button-sgreen {
 }
 
 .ui-form-inline {
-	padding: 0 5px;
+	padding: 0 10px 0 5px;
 	display: inline-block;
 	*display: inline;
 	color: #000;

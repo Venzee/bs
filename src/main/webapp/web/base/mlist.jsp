@@ -23,6 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	max-width: 1360px;
 	padding: 15px;
 }
+#filter-content {
+	border-top: 1px solid #ddd;
+}
 </style>
 </head>
 
@@ -53,17 +56,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form action="m/list" method="get" class="ui-form">
 			    <div class="ui-box-content">
 					<div class="ui-form-inline">
-						<label for="keyword">关键字</label>
+						<label for="keyword">关键字：</label>
 						<input class="ui-input" name="w" id="keyword" value="${foro.keyword }" type="text"/>
 					</div>
 					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
-					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
+					<button type="button" id="filter" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
 					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span> 导出</button>
 					<button type="button" id="add" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> 添加会员</button>
 					<button type="button" id="delete" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> 删除会员</button>		
-					
 				</div>
-				<div class="ui-box-content">
+				<div id="filter-content" class="ui-box-content fn-hide">
 					<div class="ui-grid-row">
 						<div class="ui-grid-25">
 					    	<div class="ui-form-inline">
@@ -309,7 +311,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		});
 		seajs.use('arale/dialog/1.2.6/dialog.css');
-		seajs.use(['dialog', 'select'], function(Dialog, Select) {
+		seajs.use(['dialog', 'select', '$'], function(Dialog, Select, $) {
 			var o = new Dialog({
 				trigger : '#add',
 				width : '500px',
@@ -335,6 +337,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    trigger: '#client'
 			}).render();
 	    	
+	    	$('#filter').on('click', function(){
+	    		$(this).toggleClass('active');
+	    		$('#filter-content').slideToggle();
+	    	});
 		});
 		seajs.use('confirmbox', function(Confirmbox) {
 			//Confirmbox.alert('xxx');
