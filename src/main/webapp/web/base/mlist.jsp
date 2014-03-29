@@ -321,7 +321,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			
 			// Select
-	    	new Select({
+	    	/*new Select({
 			    trigger: '#cardType'
 			}).render();
 	    	new Select({
@@ -335,7 +335,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}).render();
 	    	new Select({
 			    trigger: '#client'
-			}).render();
+			}).render();*/
 	    	
 	    	$('#filter').on('click', function(){
 	    		$(this).toggleClass('active');

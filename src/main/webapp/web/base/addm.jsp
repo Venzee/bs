@@ -74,11 +74,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input class="ui-input" id="name" name="m.name" type="text" required/>
 								</div>
 								<div class="ui-form-item">
-									<label class="ui-label"><span class="ui-form-required">*</span>性别：</label>
-									<input id="male" value="0" name="m.sex" type="radio" checked="checked"/>
-									<label for="male">女</label>
-									<input id="female" value="1" name="m.sex" type="radio"/>
-									<label for="female">男</label>
+									<label for="sex" class="ui-label"><span class="ui-form-required">*</span>性别：</label>
+									<select id="sex" name="m.sex" required>
+									    <option value="">请选择</option>
+										<option value="0">女</option>
+										<option value="1">男</option>
+									</select>
 								</div>
 								<div class="ui-form-item">
 									<label for="mobile" class="ui-label"><span class="ui-form-required">*</span>手机：</label>
@@ -102,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="cardType" class="ui-label"><span class="ui-form-required">*</span>卡类型：</label>
-									<select id="cardType" name="mc.cardTypeId">
-									    <option value="0">请选择</option>
+									<select id="cardType" name="mc.cardTypeId" required>
+									    <option value="">请选择</option>
 										<option value="1">钻石卡</option>
 										<option value="2">铂金卡</option>
 									</select>
@@ -176,9 +177,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'carousel' : 'arale/switchable/1.0.2/carousel'
 			}
 		});
-		seajs.use(['select', 'widget', 'carousel', '$'], function(Select, Widget, Carousel, $) {
+		seajs.use(['select', 'widget', 'validator', 'carousel', '$'], function(Select, Widget, Validator, Carousel, $) {
 		    $(function() {
 		    	// Select
+		    	new Select({
+				    trigger: '#sex'
+				}).render();
 		    	new Select({
 				    trigger: '#cardType'
 				}).render();
