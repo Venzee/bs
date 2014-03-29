@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
 					<button type="button" id="filter" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
-					<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span> 导出</button>
+					<!-- <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-download-alt"></span> 导出</button> -->
 					<button type="button" id="add" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> 添加会员</button>
 					<button type="button" id="delete" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> 删除会员</button>		
 				</div>
@@ -189,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <div class="ui-box-head">
 		        <h3 class="ui-box-head-title">查询结果</h3>
 		        <span class="ui-box-head-text">共${page.count }个会员。</span>
-		        <a href="#" class="ui-box-head-more">更多</a>
+		        <span class="ui-box-head-more"><span class="glyphicon glyphicon-download-alt"></span> <a href="#">导出查询结果</a></span>
 		    </div>
 		    
 			<table class="ui-table ui-table-inbox">

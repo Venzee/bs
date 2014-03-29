@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<label for="name" class="ui-label"><span class="ui-form-required">*</span>姓名：</label>
 									<input class="ui-input" id="name" name="m.name" type="text" required/>
 								</div>
-								<div class="ui-form-item ui-form-inline">
+								<div class="ui-form-item">
 									<label class="ui-label"><span class="ui-form-required">*</span>性别：</label>
 									<input id="male" value="0" name="m.sex" type="radio" checked="checked"/>
 									<label for="male">女</label>
@@ -127,14 +127,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="ui-form-item">
 									<label class="ui-label">工本费</label>
 								</div>
-								<div class="ui-form-item ui-form-inline">
+								<div class="ui-form-item">
 									<label for="costFee_cashPay" class="ui-label">现金付：</label>
 									<input class="ui-input" id="costFee_cashPay" name="c_ledg.cashPay" value="0" type="text" min="0"/>
 									<label for="costFee_unionPay" class="ui-input-pre">银联付：</label>
 									<input class="ui-input" id="costFee_unionPay" name="c_ledg.unionPay" value="0" type="text" min="0"/>
 								</div>
 								<div class="ui-form-item">
-									<label class="ui-label">充值明细</label>
+									<label class="ui-label">充值</label>
 								</div>
 								<div class="ui-form-item">
 									<label for="recharge_cashPay" class="ui-label">现金付：</label>
