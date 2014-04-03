@@ -1,4 +1,4 @@
-package net.venz.business.base.dao;
+package net.venz.module.base.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

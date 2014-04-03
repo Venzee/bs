@@ -1,4 +1,4 @@
-package net.venz.business.fina.entity;
+package net.venz.module.fina.entity;
 
 import java.io.Serializable;
 

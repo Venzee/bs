@@ -1,4 +1,4 @@
-package net.venz.business.pos.entity;
+package net.venz.module.pos.entity;
 
 import java.io.Serializable;
 

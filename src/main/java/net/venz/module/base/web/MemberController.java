@@ -1,10 +1,10 @@
-package net.venz.business.base.web;
+package net.venz.module.base.web;
 
 import java.util.List;
 
-import net.venz.business.base.entity.MemberForm;
-import net.venz.business.base.service.MemberService;
 import net.venz.core.base.entity.Page;
+import net.venz.module.base.entity.MemberForm;
+import net.venz.module.base.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

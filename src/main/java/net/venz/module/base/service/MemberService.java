@@ -1,17 +1,17 @@
-package net.venz.business.base.service;
+package net.venz.module.base.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.venz.business.base.dao.MemberCardDao;
-import net.venz.business.base.dao.MemberDao;
-import net.venz.business.base.entity.Member;
-import net.venz.business.base.entity.MemberCard;
-import net.venz.business.base.entity.MemberForm;
 import net.venz.core.base.entity.Page;
 import net.venz.core.util.DataUtil;
+import net.venz.module.base.dao.MemberCardDao;
+import net.venz.module.base.dao.MemberDao;
+import net.venz.module.base.entity.Member;
+import net.venz.module.base.entity.MemberCard;
+import net.venz.module.base.entity.MemberForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

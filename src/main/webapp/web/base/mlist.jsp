@@ -314,7 +314,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		});
 		seajs.use('arale/dialog/1.3.0/dialog.css');
-		seajs.use(['dialog', 'select', 'icheck', '$'], function(Dialog, Select, iCheck, $) {
+		seajs.use(['$', 'dialog', 'select', 'icheck'], function($, Dialog, Select) {
+			
 			$('input:checkbox').iCheck({
 				checkboxClass: 'icheckbox_minimal-blue',
 				radioClass: 'iradio_minimal-blue'
@@ -349,7 +350,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		$(this).toggleClass('active');
 	    		$('#filter-content').slideToggle();
 	    	});
+			
 		});
+		
 	</script>
 </body>
 </html>

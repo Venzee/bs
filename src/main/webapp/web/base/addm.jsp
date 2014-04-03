@@ -184,8 +184,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'icheck' : 'jquery/icheck/1.0.2/icheck'
 			}
 		});
-		seajs.use(['select', 'widget', 'validator', 'carousel', 'icheck', '$'], function(Select, Widget, Validator, Carousel, iCheck, $) {
+		seajs.use(['$', 'select', 'widget', 'validator', 'carousel', 'icheck'], function($, Select, Widget, Validator, Carousel) {
 		    $(function() {
+		    	
 		    	$('input:radio').iCheck({
 					checkboxClass: 'icheckbox_minimal-blue',
 					radioClass: 'iradio_minimal-blue'
@@ -197,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}).render();
 		    	
 		    	// Validation
-		        Widget.autoRenderAll();
+		        //Widget.autoRenderAll();
 		        
 		    	// 轮播
 		        var c = new Carousel({

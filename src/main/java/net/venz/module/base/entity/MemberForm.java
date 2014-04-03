@@ -1,9 +1,9 @@
-package net.venz.business.base.entity;
+package net.venz.module.base.entity;
 
 import java.io.Serializable;
 import java.util.List;
 
-import net.venz.business.fina.entity.Ledger;
+import net.venz.module.fina.entity.Ledger;
 
 public class MemberForm implements Serializable {
 

@@ -1,4 +1,4 @@
-package net.venz.business.pos.dao;
+package net.venz.module.pos.dao;
 
 import net.venz.core.base.dao.BaseDao;
 import org.springframework.stereotype.Repository;
