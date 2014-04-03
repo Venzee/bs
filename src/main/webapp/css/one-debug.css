@@ -9241,6 +9241,16 @@ a.ui-button-sgreen {
 	vertical-align: middle;
 }
 
+.ui-form-radio {
+	padding: 5px 0 0 0;
+	vertical-align: middle;
+}
+
+.ui-form-radio label {
+	font-size: 14px;
+	cursor: pointer;
+}
+
 .ui-input-pre {
 	font-size: 14px;
 	height: 18px;

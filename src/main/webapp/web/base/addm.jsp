@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>首页</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/one-debug.css">
+<link rel="stylesheet" type="text/css" href="css/skins/minimal/blue.css">
 <style type="text/css">
 .container {
 	margin: 0 auto;
@@ -75,11 +76,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="sex" class="ui-label"><span class="ui-form-required">*</span>性别：</label>
-									<select id="sex" name="m.sex" required>
-									    <option value="">请选择</option>
-										<option value="0">女</option>
-										<option value="1">男</option>
-									</select>
+									<div class="ui-form-radio">
+										<div class="ui-form-inline">
+											<input type="radio" id="women" name="m.sex" value="0" checked/>
+											<label for="women">女&nbsp;</label>
+										</div>
+										<div class="ui-form-inline">
+											<input type="radio" id="man" name="m.sex" value="1"/>
+											<label for="man">男&nbsp;</label>
+										</div>
+									</div>
 								</div>
 								<div class="ui-form-item">
 									<label for="mobile" class="ui-label"><span class="ui-form-required">*</span>手机：</label>
@@ -164,25 +170,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </div>
 	</div>
 	
-	<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-style/1.0.0/seajs-style.js"></script>
+	<script type="text/javascript" src="js/sea.js"></script>
 	<script type="text/javascript">
 		seajs.config({
+			base: 'sea-modules',
 			alias : {
-				'$' : 'gallery/jquery/1.7.2/jquery',
-				'confirmbox' : 'arale/dialog/1.2.6/confirmbox',
-				'dialog' : 'arale/dialog/1.2.6/dialog',
+				'$' : 'jquery/jquery/1.10.1/jquery',
+				'confirmbox' : 'arale/dialog/1.3.0/confirmbox',
 				'select' : 'arale/select/0.9.9/select',
 				'widget' : 'arale/widget/1.1.1/widget',
 				'validator' : 'arale/validator/0.9.7/validator',
-				'carousel' : 'arale/switchable/1.0.2/carousel'
+				'carousel' : 'arale/switchable/1.0.2/carousel',
+				'icheck' : 'jquery/icheck/1.0.2/icheck'
 			}
 		});
-		seajs.use(['select', 'widget', 'validator', 'carousel', '$'], function(Select, Widget, Validator, Carousel, $) {
+		seajs.use(['select', 'widget', 'validator', 'carousel', 'icheck', '$'], function(Select, Widget, Validator, Carousel, iCheck, $) {
 		    $(function() {
+		    	$('input:radio').iCheck({
+					checkboxClass: 'icheckbox_minimal-blue',
+					radioClass: 'iradio_minimal-blue'
+				});
+		    	
 		    	// Select
-		    	new Select({
-				    trigger: '#sex'
-				}).render();
 		    	new Select({
 				    trigger: '#cardType'
 				}).render();

@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>首页</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/one-debug.css">
+<link rel="stylesheet" type="text/css" href="css/skins/minimal/blue.css">
 <style type="text/css">
 .container {
 	margin: 0 auto;
@@ -30,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<div class="ui-nav">
+	<div id="nav" class="ui-nav">
 		<ul class="ui-nav-main">
 			<li class="ui-nav-item"><a href="#">首&nbsp;&nbsp;页</a></li>
 			
@@ -193,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    </div>
 		    
 			<table class="ui-table ui-table-inbox">
-				<thead>
+				<thead id="thead">
 					<tr>
 						<th>#</th>
 						<th>姓名</th>
@@ -300,18 +301,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</div>
 	</div>
-	<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-style/1.0.0/seajs-style.js"></script>
+	<script type="text/javascript" src="js/sea.js"></script>
 	<script type="text/javascript">
 		seajs.config({
+			base: 'sea-modules',
 			alias : {
-				'$' : 'gallery/jquery/1.7.2/jquery',
-				'confirmbox' : 'arale/dialog/1.2.6/confirmbox',
-				'dialog' : 'arale/dialog/1.2.6/dialog',
-				'select' : 'arale/select/0.9.9/select'
+				'$' : 'jquery/jquery/1.10.1/jquery',
+				'confirmbox' : 'arale/dialog/1.3.0/confirmbox',
+				'dialog' : 'arale/dialog/1.3.0/dialog',
+				'select' : 'arale/select/0.9.9/select',
+				'icheck' : 'jquery/icheck/1.0.2/icheck'
 			}
 		});
-		seajs.use('arale/dialog/1.2.6/dialog.css');
-		seajs.use(['dialog', 'select', '$'], function(Dialog, Select, $) {
+		seajs.use('arale/dialog/1.3.0/dialog.css');
+		seajs.use(['dialog', 'select', 'icheck', '$'], function(Dialog, Select, iCheck, $) {
+			$('input:checkbox').iCheck({
+				checkboxClass: 'icheckbox_minimal-blue',
+				radioClass: 'iradio_minimal-blue'
+			});
+			
 			var o = new Dialog({
 				trigger : '#add',
 				width : '500px',
@@ -341,9 +349,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		$(this).toggleClass('active');
 	    		$('#filter-content').slideToggle();
 	    	});
-		});
-		seajs.use('confirmbox', function(Confirmbox) {
-			//Confirmbox.alert('xxx');
 		});
 	</script>
 </body>
