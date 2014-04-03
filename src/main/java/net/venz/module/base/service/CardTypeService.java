@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CadTypeService {
+public class CardTypeService {
 
 	@Autowired
 	private CardTypeDao cardTypeDao;

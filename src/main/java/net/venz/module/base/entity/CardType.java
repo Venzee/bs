@@ -20,10 +20,10 @@ public class CardType implements Serializable {
 	private int feeFlag; // 卡费用标识 0普通储值卡,1疗程计次卡
 	private int smsFlag; // 是否发送短信
 	private int smsCostFlag; // 是否扣除信息费
-	private double preCardFee; // 预充值卡金
-	private double prePresentFee; // 预充值赠送金
-	private double preTreatFee; // 预充值疗程卡金
-	private double preTreatPresentFee; // 预充值疗程赠送金
+	private double prepCardFee; // 预充值卡金
+	private double prepPresentFee; // 预充值赠送金
+	private double prepTreatFee; // 预充值疗程卡金
+	private double prepTreatPresentFee; // 预充值疗程赠送金
 	private double costFee; // 工本费
 	private int shopId; // 所属商家ID
 	private String remark; // 备注
@@ -93,36 +93,36 @@ public class CardType implements Serializable {
 		this.smsCostFlag = smsCostFlag;
 	}
 
-	public double getPreCardFee() {
-		return preCardFee;
+	public double getPrepCardFee() {
+		return prepCardFee;
 	}
 
-	public void setPreCardFee(double preCardFee) {
-		this.preCardFee = preCardFee;
+	public void setPrepCardFee(double prepCardFee) {
+		this.prepCardFee = prepCardFee;
 	}
 
-	public double getPrePresentFee() {
-		return prePresentFee;
+	public double getPrepPresentFee() {
+		return prepPresentFee;
 	}
 
-	public void setPrePresentFee(double prePresentFee) {
-		this.prePresentFee = prePresentFee;
+	public void setPrepPresentFee(double prepPresentFee) {
+		this.prepPresentFee = prepPresentFee;
 	}
 
-	public double getPreTreatFee() {
-		return preTreatFee;
+	public double getPrepTreatFee() {
+		return prepTreatFee;
 	}
 
-	public void setPreTreatFee(double preTreatFee) {
-		this.preTreatFee = preTreatFee;
+	public void setPrepTreatFee(double prepTreatFee) {
+		this.prepTreatFee = prepTreatFee;
 	}
 
-	public double getPreTreatPresentFee() {
-		return preTreatPresentFee;
+	public double getPrepTreatPresentFee() {
+		return prepTreatPresentFee;
 	}
 
-	public void setPreTreatPresentFee(double preTreatPresentFee) {
-		this.preTreatPresentFee = preTreatPresentFee;
+	public void setPrepTreatPresentFee(double prepTreatPresentFee) {
+		this.prepTreatPresentFee = prepTreatPresentFee;
 	}
 
 	public double getCostFee() {

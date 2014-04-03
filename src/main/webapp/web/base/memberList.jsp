@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<li class="ui-nav-item ui-nav-item-current"><a href="#">会员管理</a>
 				<ul class="ui-nav-submain">
-					<li class="ui-nav-subitem"><a href="#">卡类型</a></li>
+					<li class="ui-nav-subitem"><a href="cardtype/list">卡类型</a></li>
 					<li class="ui-nav-subitem ui-nav-subitem-current"><a href="#">会员资料</a></li>
 				</ul>
 			</li>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <div class="ui-box-content">
 					<div class="ui-form-inline">
 						<label for="keyword">关键字：</label>
-						<input class="ui-input" name="w" id="keyword" value="${foro.keyword }" type="text"/>
+						<input class="ui-input" name="w" id="keyword" value="${form.w }" type="text"/>
 					</div>
 					<button type="submit" id="search" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> 查询</button>	
 					<button type="button" id="filter" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-filter"></span> 高级查询</button>
@@ -209,7 +209,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${mList }" var="o" varStatus="i">
+					<c:forEach items="${memberList }" var="o" varStatus="i">
 						<c:choose>
 							<c:when test="${fn:length(o.mc_list) > 1 }">
 								<tr>
@@ -326,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width : '500px',
 				initialHeight : '435px',
 				effect : 'fade',
-				content : './web/base/addm.jsp'
+				content : './web/base/addMember.jsp'
 			});
 			
 			// Select

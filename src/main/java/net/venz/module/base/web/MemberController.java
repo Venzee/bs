@@ -21,20 +21,20 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping("/add")
-	public String add(MemberForm form) {
+	public String addMember(MemberForm form) {
 		int result = memberService.addMember(form.getM(), form.getMc());
 		return String.valueOf(result);
 	}
 
 	@RequestMapping("/list")
-	public String listPage(MemberForm form, Page page, ModelMap map) {
+	public String listMemberPage(MemberForm form, Page page, ModelMap map) {
 		int count = memberService.countMemberList(form);
 		Page.buildPage(page, count);
 		List<MemberForm> memberList = memberService.getMemberListPage(form, page);
 		map.put("form", form);
 		map.put("page", page);
-		map.put("mList", memberList);
-		return "../web/base/mlist";
+		map.put("memberList", memberList);
+		return "../web/base/memberList";
 	}
 
 	@ResponseBody

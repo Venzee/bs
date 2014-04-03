@@ -31,8 +31,8 @@ public class CardTypeDao extends BaseDao {
 	 */
 	public List<Map<String, Object>> getCardTypeAll(Object shopId) {
 		String sql = "select id,name,status,consumediscount,goodsdiscount,feeflag,smsflag,"
-				+ "smscostflag,precardfee,prepresentfee,pretreatfee,pretreatpresentfee,costfee,"
-				+ "shopid,remarkrevoketime from base_card_type where shopid = ?";
+				+ "smscostflag,prepcardfee,preppresentfee,preptreatfee,preptreatpresentfee,costfee,"
+				+ "shopid,remark,revoketime from base_card_type where shopid = ?";
 		List<Map<String, Object>> dataList = null;
 		try {
 			dataList = this.executeQueryMultiple(sql, Arrays.asList(shopId));
