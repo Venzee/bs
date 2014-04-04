@@ -54,7 +54,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="container">
 		<div class="ui-box">
-			
+			<form action="m/list" method="get" class="ui-form">
+			    <div class="ui-box-content">
+					<button type="button" id="add" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> 添加卡类型</button>
+					<button type="button" id="delete" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> 删除卡类型</button>		
+				</div>
+			</form>
 		</div>
 		<div class="ui-box">
 		    
@@ -90,6 +95,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</div>
 	</div>
+	
+	<div id="detail"  class="fn-hide">
+		<div class="ui-box">
+		    <div class="ui-box-head">
+		        <h3 class="ui-box-head-title">添加卡类型</h3>
+		    </div>
+		    <div class="ui-box-container">
+				<form class="ui-form" id="member-form" name="member-form" action="m/add" method="post" data-widget="validator">
+					<fieldset>
+						<div class="ui-box-content">
+							<div class="ui-form-item">
+								<label for="name" class="ui-label"><span class="ui-form-required">*</span>姓名：</label>
+								<input class="ui-input" id="name" name="m.name" type="text" required/>
+							</div>
+							<div class="ui-form-item">
+								<label for="sex" class="ui-label"><span class="ui-form-required">*</span>性别：</label>
+								<div class="ui-form-radio">
+									<div class="ui-form-inline">
+										<input type="radio" id="women" name="m.sex" value="0" checked/>
+										<label for="women">女&nbsp;</label>
+									</div>
+									<div class="ui-form-inline">
+										<input type="radio" id="man" name="m.sex" value="1"/>
+										<label for="man">男&nbsp;</label>
+									</div>
+								</div>
+							</div>
+							<div class="ui-form-item">
+								<label for="mobile" class="ui-label"><span class="ui-form-required">*</span>手机：</label>
+								<input class="ui-input" id="mobile" name="m.mobile" type="text" required/>
+							</div>
+							<div class="ui-form-item">
+								<label for="password" class="ui-label">密码：</label>
+								<input class="ui-input" id="password" name="m.password" type="password" minlength="4" maxlength="20"/>
+							</div>
+							<div class="ui-form-item">
+								<label for="birth" class="ui-label">生日：</label>
+								<input class="ui-input" id="birth" name="mc.birth" type="text"/>
+							</div>
+						</div>
+					</fieldset>
+					<div class="ui-box-content">
+						<div class="ui-form-item">
+							<div class="fn-right">
+								<button type="submit" id="btn-submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok-sign"></span> 保&nbsp;&nbsp;&nbsp;存</button>
+							</div>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/sea.js"></script>
 	<script type="text/javascript">
 		seajs.config({
@@ -115,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				width : '500px',
 				initialHeight : '435px',
 				effect : 'fade',
-				content : './web/base/addMember.jsp'
+				content : $('#detail').html()
 			});
 			
 		});

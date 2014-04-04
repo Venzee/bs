@@ -84,10 +84,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<input class="ui-input" name="endConsumeTimes" type="text"/>
 							</div>
 							<div class="ui-form-inline">
-								<label for="consumeDate">最后消费：</label>
-								<input class="ui-input" name="startConsumeDate" id="consumeDate" type="text"/>
+								<label for="startLastConsumeDate">最后消费：</label>
+								<input class="ui-input" id="startLastConsumeDate" name="startLastConsumeDate" type="text"/>
 								<span>&nbsp;至&nbsp;</span>
-								<input class="ui-input" name="endConsumeDate" type="text"/>
+								<input class="ui-input" id="endLastConsumeDate" name="endLastConsumeDate" type="text"/>
 							</div>
 						</div>
 					</div>
@@ -102,16 +102,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</select>
 							</div>
 							<div class="ui-form-inline">
-								<label for="openDate">开卡时间：</label>
-								<input class="ui-input" name="startOpenDate" id="openDate" type="text"/>
+								<label for="startOpenDate">开卡时间：</label>
+								<input class="ui-input" id="startOpenDate" name="startOpenDate" type="text"/>
 								<span>&nbsp;至&nbsp;</span>
-								<input class="ui-input" name="endOpenDate" type="text"/>
+								<input class="ui-input" id="endOpenDate" name="endOpenDate" type="text"/>
 							</div>
 							<div class="ui-form-inline">
-								<label for="joinDate">注册时间：</label>
-								<input class="ui-input" name="startJoinDate" id="joinDate" type="text"/>
+								<label for="startJoinDate">注册时间：</label>
+								<input class="ui-input" id="startJoinDate" name="startJoinDate" type="text"/>
 								<span>&nbsp;至&nbsp;</span>
-								<input class="ui-input" name="endJoinDate" type="text"/>
+								<input class="ui-input" id="endJoinDate" name="endJoinDate" type="text"/>
 							</div>
 						</div>
 					</div>
@@ -170,10 +170,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</select>
 							</div>
 							<div class="ui-form-inline">
-								<label for="birth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
-								<input class="ui-input" name="startBirth" id="birth" type="text"/>
+								<label for="startBirth">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
+								<input class="ui-input" id="startBirth" name="startBirth" type="text"/>
 								<span>&nbsp;至&nbsp;</span>
-								<input class="ui-input" name="endBirth" type="text"/>
+								<input class="ui-input" id="endBirth" name="endBirth" type="text"/>
 							</div>
 							<div class="ui-form-inline">
 								<label for="point">积&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：</label>
@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <div class="ui-box-head">
 		        <h3 class="ui-box-head-title">查询结果</h3>
 		        <span class="ui-box-head-text">共${page.count }个会员。</span>
-		        <span class="ui-box-head-more"><span class="glyphicon glyphicon-download-alt"></span> <a href="#">导出查询结果</a></span>
+		        <span class="ui-box-head-more"><span class="glyphicon glyphicon-download-alt"></span> <a href="#">导出</a></span>
 		    </div>
 		    
 			<table class="ui-table ui-table-inbox">
@@ -309,12 +309,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'$' : 'jquery/jquery/1.10.1/jquery',
 				'confirmbox' : 'arale/dialog/1.3.0/confirmbox',
 				'dialog' : 'arale/dialog/1.3.0/dialog',
+				'calendar' : 'arale/calendar/1.0.0/calendar',
 				'select' : 'arale/select/0.9.9/select',
 				'icheck' : 'jquery/icheck/1.0.2/icheck'
 			}
 		});
 		seajs.use('arale/dialog/1.3.0/dialog.css');
-		seajs.use(['$', 'dialog', 'select', 'icheck'], function($, Dialog, Select) {
+		seajs.use('arale/calendar/1.0.0/calendar.css');
+		seajs.use(['$', 'dialog', 'calendar', 'select', 'icheck'], function($, Dialog, Calendar, Select) {
 			
 			$('input:checkbox').iCheck({
 				checkboxClass: 'icheckbox_minimal-blue',
@@ -329,6 +331,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				content : './web/base/addMember.jsp'
 			});
 			
+			var t1 = '2014-01-01';
+			var t2 = '2014-05-01';
+			
+			var c1 = new Calendar({
+				trigger: '#startLastConsumeDate',
+				range: [t1, null]
+			});
+			var c2 = new Calendar({
+				trigger: '#endLastConsumeDate',
+				range: [null, t2]
+			});
+			
+			c1.on('selectDate', function(date) {
+		        c2.range([date, t2]);
+		    });
+
+		    c2.on('selectDate', function(date) {
+		        c1.range([t1, date]);
+		    });
+			
+			new Calendar({
+				trigger: '#startOpenDate'
+			});
+			new Calendar({
+				trigger: '#endOpenDate'
+			});
+			new Calendar({
+				trigger: '#startJoinDate'
+			});
+			new Calendar({
+				trigger: '#endJoinDate'
+			});
+			new Calendar({
+				trigger: '#startBirth'
+			});
+			new Calendar({
+				trigger: '#endBirth'
+			});
 			// Select
 	    	/*new Select({
 			    trigger: '#cardType'
