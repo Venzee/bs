@@ -65,20 +65,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    </li>
 				</ol>
 			</div>
-			<form class="ui-form" id="member-form" name="member-form" action="m/add" method="post" data-widget="validator">
+			<form class="ui-form" id="member-form" name="member-form" action="m/add" method="post">
 				<fieldset>
 					<div class="ui-switchable-content" data-switchable-role="content">
 						<div class="ui-switchable-panel">
 							<div class="ui-box-content">
 								<div class="ui-form-item">
 									<label for="name" class="ui-label"><span class="ui-form-required">*</span>姓名：</label>
-									<input class="ui-input" id="name" name="m.name" type="text" required/>
+									<input class="ui-input" id="name" name="m.name" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="sex" class="ui-label"><span class="ui-form-required">*</span>性别：</label>
 									<div class="ui-form-radio">
 										<div class="ui-form-inline">
-											<input type="radio" id="women" name="m.sex" value="0"/>
+											<input type="radio" id="women" name="m.sex" value="0" checked/>
 											<label for="women">女&nbsp;</label>
 										</div>
 										<div class="ui-form-inline">
@@ -89,11 +89,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="mobile" class="ui-label"><span class="ui-form-required">*</span>手机：</label>
-									<input class="ui-input" id="mobile" name="m.mobile" type="text" required/>
+									<input class="ui-input" id="mobile" name="m.mobile" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="password" class="ui-label">密码：</label>
-									<input class="ui-input" id="password" name="m.password" type="password" minlength="4" maxlength="20"/>
+									<input class="ui-input" id="password" name="m.password" type="password"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="birth" class="ui-label">生日：</label>
@@ -104,12 +104,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="ui-switchable-panel">
 							<div class="ui-box-content">
 								<div class="ui-form-item">
-									<label for="cardno" class="ui-label"><span class="ui-form-required">*</span>卡号：</label>
-									<input class="ui-input" id="cardno" name="mc.cardNo" type="text" required/>
+									<label for="cardNo" class="ui-label"><span class="ui-form-required">*</span>卡号：</label>
+									<input class="ui-input" id="cardNo" name="mc.cardNo" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="cardType" class="ui-label"><span class="ui-form-required">*</span>卡类型：</label>
-									<select id="cardType" name="mc.cardTypeId" required>
+									<select id="cardType" name="mc.cardTypeId">
 									    <option value="">请选择</option>
 										<option value="1">钻石卡</option>
 										<option value="2">铂金卡</option>
@@ -121,11 +121,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="consumeDiscount" class="ui-label"><span class="ui-form-required">*</span>消费折扣：</label>
-									<input class="ui-input" id="consumeDiscount" name="mc.consumeDiscount" type="text" required max="10" min="0"/>
+									<input class="ui-input" id="consumeDiscount" name="mc.consumeDiscount" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="goodsDiscount" class="ui-label"><span class="ui-form-required">*</span>卖品折扣：</label>
-									<input class="ui-input" id="goodsDiscount" name="mc.goodsDiscount" type="text" required max="10" min="0"/>
+									<input class="ui-input" id="goodsDiscount" name="mc.goodsDiscount" type="text"/>
 								</div>
 							</div>
 						</div>
@@ -136,22 +136,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="ui-form-item">
 									<label for="costFee_cashPay" class="ui-label">现金付：</label>
-									<input class="ui-input" id="costFee_cashPay" name="c_ledg.cashPay" value="0" type="text" min="0"/>
+									<input class="ui-input" id="costFee_cashPay" name="c_ledg.cashPay" value="0" type="text"/>
 									<label for="costFee_unionPay" class="ui-input-pre">银联付：</label>
-									<input class="ui-input" id="costFee_unionPay" name="c_ledg.unionPay" value="0" type="text" min="0"/>
+									<input class="ui-input" id="costFee_unionPay" name="c_ledg.unionPay" value="0" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label class="ui-label">充值</label>
 								</div>
 								<div class="ui-form-item">
 									<label for="recharge_cashPay" class="ui-label">现金付：</label>
-									<input class="ui-input" id="recharge_cashPay" name="r_ledg.cashPay" value="0" type="text" min="0"/>
+									<input class="ui-input" id="recharge_cashPay" name="r_ledg.cashPay" value="0" type="text"/>
 									<label for="recharge_unionPay" class="ui-input-pre">银联付：</label>
-									<input class="ui-input" id="recharge_unionPay" name="r_ledg.unionPay" value="0" type="text" min="0"/>
+									<input class="ui-input" id="recharge_unionPay" name="r_ledg.unionPay" value="0" type="text"/>
 								</div>
 								<div class="ui-form-item">
 									<label for="presentFee" class="ui-label">赠送金：</label>
-									<input class="ui-input" id="presentFee" name="mc.presentFee" value="0" type="text" min="0"/>
+									<input class="ui-input" id="presentFee" name="mc.presentFee" value="0" type="text"/>
 								</div>
 							</div>
 						</div>
@@ -178,13 +178,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'$' : 'jquery/jquery/1.10.1/jquery',
 				'confirmbox' : 'arale/dialog/1.3.0/confirmbox',
 				'select' : 'arale/select/0.9.9/select',
-				'widget' : 'arale/widget/1.1.1/widget',
 				'validator' : 'arale/validator/0.9.7/validator',
 				'carousel' : 'arale/switchable/1.0.2/carousel',
 				'icheck' : 'jquery/icheck/1.0.2/icheck'
 			}
 		});
-		seajs.use(['$', 'select', 'widget', 'validator', 'carousel', 'icheck'], function($, Select, Widget, Validator, Carousel) {
+		seajs.use(['$', 'select', 'validator', 'carousel', 'icheck'], function($, Select, Validator, Carousel) {
 		    $(function() {
 		    	
 		    	$('input:radio').iCheck({
@@ -198,8 +197,102 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}).render();
 		    	
 		    	// Validation
-		        //Widget.autoRenderAll();
-		        
+		        var validator = new Validator({
+		            element: 'form'
+		        });
+		    	
+		        validator.addItem({
+		            element: '#name',
+		            required: true,
+		            rule: 'minlength{min:1} maxlength{max:20}'
+		        }).addItem({
+		            element: '#mobile',
+		            required: true,
+		            rule: 'mobile minlength{min:11}'
+		        }).addItem({
+		            element: '#cardNo',
+		            required: true
+		        }).addItem({
+		            element: '#cardType',
+		            required: true
+		        }).addItem({
+		            element: '#consumeDiscount',
+		            required: true,
+		            rule: 'number min{min:0}'
+		        }).addItem({
+		            element: '#goodsDiscount',
+		            required: true,
+		            rule: 'number min{min:0}'
+		        }).addItem({
+		            element: '#password',
+		            required: false,
+		            rule: 'minlength{min:4}'
+		        }).addItem({
+		            element: '#birth',
+		            required: false,
+		            rule: 'date'
+		        }).addItem({
+		            element: '#expireDate',
+		            required: false,
+		            rule: 'date'
+		        }).addItem({
+		            element: '#costFee_cashPay',
+		            required: false,
+		            rule: 'number min{min:0}',
+		            display: '工本费现金付'
+		        }).addItem({
+		            element: '#costFee_unionPay',
+		            required: false,
+		            rule: 'number min{min:0}',
+		            display: '工本费银联付',
+		            showMessage: function(message, element) {
+		                // 结束日期出错后会调用这个函数。如果前面的开始日期没有出错的时候才显示自己的出错消息。
+		                var startErr = $.trim(this.getExplain(element).html());
+		                if (!startErr) {
+		                    this.getExplain(element).html(message);
+		                    this.getItem(element).addClass(this.get('itemErrorClass'));
+		                }
+		            },
+		            hideMessage: function(message, element) {
+		                // 结束日期校验通过后会调用这个函数。如果前面的开始日期没有出错的时候才清空消息。
+		                var startErr = $.trim(this.getExplain(element).html());
+		                if (!startErr) {
+		                    this.getExplain(element).html(element.attr('data-explain') || ' ');
+		                    this.getItem(element).removeClass(this.get('itemErrorClass'));
+		                }
+		            }
+		        }).addItem({
+		            element: '#recharge_cashPay',
+		            required: false,
+		            rule: 'number min{min:0}',
+		            display: '充值现金付',
+		        }).addItem({
+		            element: '#recharge_unionPay',
+		            required: false,
+		            rule: 'number min{min:0}',
+		            display: '充值银联付',
+		            showMessage: function(message, element) {
+		                // 结束日期出错后会调用这个函数。如果前面的开始日期没有出错的时候才显示自己的出错消息。
+		                var startErr = $.trim(this.getExplain(element).html());
+		                if (!startErr) {
+		                    this.getExplain(element).html(message);
+		                    this.getItem(element).addClass(this.get('itemErrorClass'));
+		                }
+		            },
+		            hideMessage: function(message, element) {
+		                // 结束日期校验通过后会调用这个函数。如果前面的开始日期没有出错的时候才清空消息。
+		                var startErr = $.trim(this.getExplain(element).html());
+		                if (!startErr) {
+		                    this.getExplain(element).html(element.attr('data-explain') || ' ');
+		                    this.getItem(element).removeClass(this.get('itemErrorClass'));
+		                }
+		            }
+		        }).addItem({
+		            element: '#presentFee',
+		            required: false,
+		            rule: 'number min{min:0}'
+		        });
+		    	
 		    	// 轮播
 		        var c = new Carousel({
 			        element: '#member-form',

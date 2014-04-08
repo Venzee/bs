@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</c:when>
 										<c:otherwise>
 											<td colspan="4" class="warning">
-												<span class="text-danger">无会员卡 <a href="#">[开卡]</a></span>
+												<span class="text-danger">无会员卡 <a class="openc" href="#javascript:;">[开卡]</a></span>
 											</td>
 										</c:otherwise>
 									</c:choose>
@@ -363,44 +363,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				content : './web/base/addMember.jsp'
 			});
 			
-			var t1 = '2014-01-01';
-			var t2 = '2014-05-01';
-			
-			var c1 = new Calendar({
+			// 日期选择初始化
+			var t1 = '2014-01-01', t2 = '2014-05-01',
+			c1 = new Calendar({
 				trigger: '#startLastConsumeDate',
-				range: [t1, null]
-			});
-			var c2 = new Calendar({
+				range: [t1, t2]
+			}), c2 = new Calendar({
 				trigger: '#endLastConsumeDate',
-				range: [null, t2]
+				range: [t1, t2]
+			}), c3 = new Calendar({
+				trigger: '#startOpenDate',
+				range: [t1, t2]
+			}), c4 = new Calendar({
+				trigger: '#endOpenDate',
+				range: [t1, t2]
+			}), c5 = new Calendar({
+				trigger: '#startJoinDate',
+				range: [t1, t2]
+			}), c6 = new Calendar({
+				trigger: '#endJoinDate',
+				range: [t1, t2]
+			}), c7 = new Calendar({
+				trigger: '#startBirth',
+				range: [t1, t2]
+			}), c8 = new Calendar({
+				trigger: '#endBirth',
+				range: [t1, t2]
 			});
 			
+			// 双日期选择关联
 			c1.on('selectDate', function(date) {
 		        c2.range([date, t2]);
 		    });
-
 		    c2.on('selectDate', function(date) {
 		        c1.range([t1, date]);
 		    });
 			
-			new Calendar({
-				trigger: '#startOpenDate'
-			});
-			new Calendar({
-				trigger: '#endOpenDate'
-			});
-			new Calendar({
-				trigger: '#startJoinDate'
-			});
-			new Calendar({
-				trigger: '#endJoinDate'
-			});
-			new Calendar({
-				trigger: '#startBirth'
-			});
-			new Calendar({
-				trigger: '#endBirth'
-			});
+		    c3.on('selectDate', function(date) {
+		        c4.range([date, t2]);
+		    });
+		    c4.on('selectDate', function(date) {
+		        c3.range([t1, date]);
+		    });
+		    
+		    c5.on('selectDate', function(date) {
+		        c6.range([date, t2]);
+		    });
+		    c6.on('selectDate', function(date) {
+		        c5.range([t1, date]);
+		    });
+		    
+		    c7.on('selectDate', function(date) {
+		        c8.range([date, t2]);
+		    });
+		    c8.on('selectDate', function(date) {
+		        c7.range([t1, date]);
+		    });
+		    
 			// Select
 	    	/*new Select({
 			    trigger: '#cardType'
@@ -422,11 +441,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			});
 			
+			// 高级查询
 			$('#filter').on('click', function() {
 				$(this).toggleClass('active');
 				$('#filter-content').slideToggle();
 			});
 
+			// 无卡会员开卡事件绑定
+			$('.openc').on('click', function(){
+				o.show();
+			});
+			
 		});
 	</script>
 </body>
