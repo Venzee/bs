@@ -92,6 +92,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</c:forEach>
 				</tbody>
+				<tr>
+					<td colspan="10">
+						<c:if test="${fn:length(cardTypeList) == 0 }">
+							无记录
+						</c:if>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</div>

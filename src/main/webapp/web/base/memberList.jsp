@@ -295,7 +295,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tbody>
 				<tr>
 					<td colspan="10">
-						<jsp:include page="../comm/page.jsp"></jsp:include>
+						<c:choose>
+							<c:when test="${page.pc == 0 }">
+								无记录
+							</c:when>
+							<c:otherwise>
+								<jsp:include page="../comm/page.jsp"></jsp:include>
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>
 			</table>
@@ -311,12 +318,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'dialog' : 'arale/dialog/1.3.0/dialog',
 				'calendar' : 'arale/calendar/1.0.0/calendar',
 				'select' : 'arale/select/0.9.9/select',
-				'icheck' : 'jquery/icheck/1.0.2/icheck'
+				'icheck' : 'jquery/icheck/1.0.2/icheck',
+				'spin' : 'jquery/spin/2.0.0/spin'
 			}
 		});
 		seajs.use('arale/dialog/1.3.0/dialog.css');
 		seajs.use('arale/calendar/1.0.0/calendar.css');
-		seajs.use(['$', 'dialog', 'calendar', 'select', 'icheck'], function($, Dialog, Calendar, Select) {
+		seajs.use(['$', 'dialog', 'calendar', 'select', 'icheck', 'spin'], function($, Dialog, Calendar, Select) {
+			
+			var opts = {
+				lines: 10, // The number of lines to draw
+				length: 10, // The length of each line
+				width: 5, // The line thickness
+				radius: 15, // The radius of the inner circle
+				corners: 1, // Corner roundness (0..1)
+				rotate: 0, // The rotation offset
+				direction: 1, // 1: clockwise, -1: counterclockwise
+				color: '#000', // #rgb or #rrggbb or array of colors
+				speed: 1, // Rounds per second
+				trail: 60, // Afterglow percentage
+				shadow : true, // Whether to render a shadow
+				hwaccel : false, // Whether to use hardware acceleration
+				className : 'ui-spinner' // The CSS class to assign to the spinner
+			}, spinner = '';
+			
+			if(spinner !== ''){
+				spinner.spin();
+			}else{
+				spinner = new Spinner(opts).spin();
+			}
+			
+			//$('body').append(spinner.el);
 			
 			$('input:checkbox').iCheck({
 				checkboxClass: 'icheckbox_minimal-blue',
@@ -385,14 +417,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	new Select({
 			    trigger: '#client'
 			}).render();*/
-	    	
-	    	$('#filter').on('click', function(){
-	    		$(this).toggleClass('active');
-	    		$('#filter-content').slideToggle();
-	    	});
+
+			$('#delete').on('click', function(){
+				
+			});
 			
+			$('#filter').on('click', function() {
+				$(this).toggleClass('active');
+				$('#filter-content').slideToggle();
+			});
+
 		});
-		
 	</script>
 </body>
 </html>

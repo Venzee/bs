@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<label for="sex" class="ui-label"><span class="ui-form-required">*</span>性别：</label>
 									<div class="ui-form-radio">
 										<div class="ui-form-inline">
-											<input type="radio" id="women" name="m.sex" value="0" checked/>
+											<input type="radio" id="women" name="m.sex" value="0"/>
 											<label for="women">女&nbsp;</label>
 										</div>
 										<div class="ui-form-inline">

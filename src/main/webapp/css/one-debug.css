@@ -139,6 +139,12 @@ code,kbd,pre,samp {
 	font-size: 1em;
 }
 
+/* Spin */
+.ui-spinner {
+	left: 50%;
+	top: 50%;
+}
+
 /* 清理浮动 */
 .fn-clear:after {
 	visibility: hidden;
