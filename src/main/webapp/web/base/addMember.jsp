@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="fn-right">
 							<button type="button" id="btn-prev" class="btn btn-default btn-sm ui-switchable-prev-btn" data-switchable-role="prev"><span class="glyphicon glyphicon-chevron-left"></span> 上一步</button>
 							<button type="button" id="btn-next" class="btn btn-default btn-sm ui-switchable-next-btn" data-switchable-role="next">下一步 <span class="glyphicon glyphicon-chevron-right"></span></button>
-							<button type="submit" id="btn-submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok-sign"></span> 保&nbsp;&nbsp;&nbsp;存</button>
+							<button type="button" id="btn-submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-ok-sign"></span> 保&nbsp;&nbsp;&nbsp;存</button>
 						</div>
 					</div>
 				</div>
@@ -180,10 +180,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				'select' : 'arale/select/0.9.9/select',
 				'validator' : 'arale/validator/0.9.7/validator',
 				'carousel' : 'arale/switchable/1.0.2/carousel',
-				'icheck' : 'jquery/icheck/1.0.2/icheck'
+				'icheck' : 'jquery/icheck/1.0.2/icheck',
+				'form' : 'jquery/form/3.50.0/form'
 			}
 		});
-		seajs.use(['$', 'select', 'validator', 'carousel', 'icheck'], function($, Select, Validator, Carousel) {
+		seajs.use(['$', 'select', 'validator', 'carousel', 'icheck', 'form'], function($, Select, Validator, Carousel) {
 		    $(function() {
 		    	
 		    	$('input:radio').iCheck({
@@ -336,6 +337,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        		m_step.find('li:eq(' + toIndex + ')').removeClass('ui-step-done').addClass('ui-step-active');
 		        	}
 		        });
+		        
+		        // From submit 
+	            $('#btn-submit').on('click', function(){
+	                $('#member-form').ajaxSubmit({ 
+		                success: function(responseText, statusText, xhr, $form){
+		                	if(responseText == 0){
+		                		window.frameElement.trigger('close');
+		                	}
+						}
+	                }); 
+	            });
+	            
 		    });
 		});
 	</script>

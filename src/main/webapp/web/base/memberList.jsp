@@ -348,20 +348,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				spinner = new Spinner(opts).spin();
 			}
 			
-			//$('body').append(spinner.el);
-			
 			$('input:checkbox').iCheck({
 				checkboxClass: 'icheckbox_minimal-blue',
 				radioClass: 'iradio_minimal-blue'
 			});
 			
-			var o = new Dialog({
+			var mdialog = new Dialog({
 				trigger : '#add',
 				width : '500px',
 				initialHeight : '435px',
 				effect : 'fade',
 				content : './web/base/addMember.jsp'
-			});
+			}).on('complete:show', function() {
+				spinner.stop();
+		    }).before('show', function(){
+		    	$('body').append(spinner.el);
+		    }).after('hide', function() {
+				window.location.reload();
+		    });
 			
 			// 日期选择初始化
 			var t1 = '2014-01-01', t2 = '2014-05-01',
@@ -449,7 +453,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			// 无卡会员开卡事件绑定
 			$('.openc').on('click', function(){
-				o.show();
+				mdialog.show();
 			});
 			
 		});
