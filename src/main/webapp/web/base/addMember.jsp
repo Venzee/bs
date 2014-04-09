@@ -344,6 +344,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                success: function(responseText, statusText, xhr, $form){
 		                	if(responseText == 0){
 		                		window.frameElement.trigger('close');
+		                	}else if (responseText == -1){
+		                		// 手机号码已存在
+		                	}else if (responseText == -2){
+		                		// 卡类型卡号重复
 		                	}
 						}
 	                }); 

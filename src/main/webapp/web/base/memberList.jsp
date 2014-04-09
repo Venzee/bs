@@ -348,22 +348,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				spinner = new Spinner(opts).spin();
 			}
 			
-			$('input:checkbox').iCheck({
-				checkboxClass: 'icheckbox_minimal-blue',
-				radioClass: 'iradio_minimal-blue'
-			});
-			
 			var mdialog = new Dialog({
 				trigger : '#add',
 				width : '500px',
 				initialHeight : '435px',
 				effect : 'fade',
 				content : './web/base/addMember.jsp'
-			}).on('complete:show', function() {
+			}).on('complete:show', function(){
 				spinner.stop();
 		    }).before('show', function(){
 		    	$('body').append(spinner.el);
-		    }).after('hide', function() {
+		    }).after('hide', function(){
 				window.location.reload();
 		    });
 			
@@ -423,6 +418,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    c8.on('selectDate', function(date) {
 		        c7.range([t1, date]);
 		    });
+		    
+		    $('input:checkbox').iCheck({
+				checkboxClass: 'icheckbox_minimal-blue',
+				radioClass: 'iradio_minimal-blue'
+			});
 		    
 			// Select
 	    	/*new Select({

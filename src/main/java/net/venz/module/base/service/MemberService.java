@@ -25,6 +25,18 @@ public class MemberService {
 	private MemberCardDao memberCardDao;
 
 	public int addMember(Member member, MemberCard memberCard) {
+		// 检查手机号码是否存在
+		boolean m_ok = memberDao.checkMobileExist(member.getMobile(), member.getShopId());
+		if(m_ok){
+			return -1;
+		}
+		// 检查卡类型卡号是否重复
+		boolean c_ok = memberCardDao.checkCardNoExist(memberCard.getCardNo(), memberCard.getCardTypeId(), memberCard.getShopId());
+		if(c_ok){
+			return -2;
+		}
+		
+		// 检查完毕无异常，新增会员和会员卡
 		member.setJoinDate(DataUtil.getCurrDateTimeStr());
 		member.setBirth("1900-01-01");
 		int id = memberDao.addMember(DataUtil.parseObjectToMap(member, Member.class));

@@ -8,12 +8,35 @@ import java.util.Map;
 import net.venz.core.base.dao.BaseDao;
 import net.venz.core.base.entity.Page;
 import net.venz.core.util.DataUtil;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDao extends BaseDao {
 
+	/**
+	 * 检查手机号码是否重复
+	 * 
+	 * @param mobile
+	 * @param shopId
+	 * @return
+	 */
+	public boolean checkMobileExist(String mobile, int shopId) {
+		String sql = "select count(id) count from base_member where shopid = ? and mobile = ?";
+		List<Object> params = new ArrayList<Object>();
+		params.add(shopId);
+		params.add(mobile);
+		try {
+			Map<String, Object> data = this.executeQuerySingle(sql, params);
+			int count = (Integer) data.get("count");
+			if(count > 0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public int addMember(Map<String, Object> data) {
 		int id = 0;
 		try {
