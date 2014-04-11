@@ -350,6 +350,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			var mdialog = new Dialog({
 				trigger : '#add',
+				align: {
+		            baseXY: ['50%', '50%'],
+		            selfXY: ['50%', '50%']
+		        },
 				width : '500px',
 				initialHeight : '435px',
 				effect : 'fade',
